@@ -24,7 +24,7 @@ Bin/
 obj/
 Obj/
 OrganizadorEventos.sln
-ClientApp/.angular/cache
+ClientApp/.angular/
 
 # Visual Studio 2015 cache/options directory
 .vs/
