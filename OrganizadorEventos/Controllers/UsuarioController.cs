@@ -11,7 +11,6 @@ public class UsuarioController: ControllerBase
     public UsuarioController(){}
 
     [HttpGet]
-
     public IEnumerable<Usuario> GetAllUsuarios()
     {
         var servicio = new UsuarioService();
