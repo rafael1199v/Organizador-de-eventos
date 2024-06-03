@@ -1,5 +1,7 @@
 <body>
-  <app-nav-menu></app-nav-menu>
+  <ng-container *ngIf="showNavbar">
+    <app-nav-menu></app-nav-menu>
+  </ng-container>
   <main class="container">
     <router-outlet></router-outlet>
   </main>
