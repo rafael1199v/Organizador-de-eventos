@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SingleEventListComponent } from './single-event-list/single-event-list.component';
 import { TeamEventListComponent } from './team-event-list/team-event-list.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TeamEventListComponent } from './team-event-list/team-event-list.compon
     LoginComponent,
     RegisterComponent,
     SingleEventListComponent,
-    TeamEventListComponent
+    TeamEventListComponent,
+    CreateEventComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +42,8 @@ import { TeamEventListComponent } from './team-event-list/team-event-list.compon
       { path: 'register', component: RegisterComponent},
       { path: 'single-event-list', component: SingleEventListComponent},
       { path: 'team-event-list', component: TeamEventListComponent},
+      { path: 'create-event', component: CreateEventComponent},
+      { path: 'event-details', component: EventDetailsComponent}
     ])
   ],
   providers: [],
