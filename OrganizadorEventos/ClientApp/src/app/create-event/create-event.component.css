@@ -32,7 +32,7 @@ body {
 
 .formbold-form-wrapper {
     margin: 0 auto;
-    max-width: 570px;
+    max-width: 550px;
     width: 100%;
     background: white;
     padding: 40px;
@@ -67,7 +67,7 @@ body {
     width: 50%;
 }
 .formbold-form-input {
-    text-align: center;
+    text-align: left;
     width: 100%;
     padding: 13px 22px;
     border-radius: 5px;
@@ -78,6 +78,21 @@ body {
     color: #536387;
     outline: none;
     resize: none;
+}
+.formbold-form-input-big { /*aquí hay que editar algo para que encaje el texto grande, no se bien qué xd*/
+    text-align: left;
+    width: 100%;
+    height: 500px;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    color: #536387;
+    outline: none;
+    resize: vertical;
+    line-height: normal;
 }
 .formbold-form-input:focus {
     border-color: #6a64f1;
