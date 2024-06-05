@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -16,6 +17,7 @@ import { TeamEventListComponent } from './team-event-list/team-event-list.compon
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,11 +30,12 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     SingleEventListComponent,
     TeamEventListComponent,
     CreateEventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

@@ -37,7 +37,7 @@ public partial class OrganizadorEventosContext : DbContext
     {
         modelBuilder.Entity<Equipo>(entity =>
         {
-            entity.HasKey(e => e.EquipoId).HasName("PK__Equipo__DE8A0BFF77C861AA");
+            entity.HasKey(e => e.EquipoId).HasName("PK__Equipo__DE8A0BFF50DF7C8B");
 
             entity.ToTable("Equipo");
 
@@ -50,24 +50,24 @@ public partial class OrganizadorEventosContext : DbContext
             entity.HasOne(d => d.Representante).WithMany(p => p.Equipos)
                 .HasForeignKey(d => d.RepresentanteId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Equipo__Represen__3C69FB99");
+                .HasConstraintName("FK__Equipo__Represen__5812160E");
         });
 
         modelBuilder.Entity<EquiposEvento>(entity =>
         {
-            entity.HasKey(e => e.EquipoEventoId).HasName("PK__Equipos___FAE795101090A161");
+            entity.HasKey(e => e.EquipoEventoId).HasName("PK__Equipos___FAE79510B00BAD9D");
 
             entity.ToTable("Equipos_Evento");
 
             entity.HasOne(d => d.Equipo).WithMany(p => p.EquiposEventos)
                 .HasForeignKey(d => d.EquipoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Equipos_E__Equip__45F365D3");
+                .HasConstraintName("FK__Equipos_E__Equip__619B8048");
         });
 
         modelBuilder.Entity<Evento>(entity =>
         {
-            entity.HasKey(e => e.EventoId).HasName("PK__Evento__1EEB59011A09D841");
+            entity.HasKey(e => e.EventoId).HasName("PK__Evento__1EEB5901463FB7B7");
 
             entity.ToTable("Evento");
 
@@ -85,29 +85,29 @@ public partial class OrganizadorEventosContext : DbContext
             entity.HasOne(d => d.Organizador).WithMany(p => p.Eventos)
                 .HasForeignKey(d => d.OrganizadorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Evento__Organiza__398D8EEE");
+                .HasConstraintName("FK__Evento__Organiza__5535A963");
         });
 
         modelBuilder.Entity<Historial>(entity =>
         {
-            entity.HasKey(e => e.HistorialId).HasName("PK__Historia__9752068FB9872A71");
+            entity.HasKey(e => e.HistorialId).HasName("PK__Historia__9752068F02A707FD");
 
             entity.ToTable("Historial");
 
             entity.HasOne(d => d.Evento).WithMany(p => p.Historials)
                 .HasForeignKey(d => d.EventoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Historial__Event__403A8C7D");
+                .HasConstraintName("FK__Historial__Event__5BE2A6F2");
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.Historials)
                 .HasForeignKey(d => d.UsuarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Historial__Usuar__3F466844");
+                .HasConstraintName("FK__Historial__Usuar__5AEE82B9");
         });
 
         modelBuilder.Entity<MiembrosEquipo>(entity =>
         {
-            entity.HasKey(e => e.MiembroEquipoId).HasName("PK__Miembros__5C016F2C39B94FC6");
+            entity.HasKey(e => e.MiembroEquipoId).HasName("PK__Miembros__5C016F2CD3A638F4");
 
             entity.ToTable("MiembrosEquipo");
 
@@ -118,34 +118,37 @@ public partial class OrganizadorEventosContext : DbContext
             entity.HasOne(d => d.Equipo).WithMany(p => p.MiembrosEquipos)
                 .HasForeignKey(d => d.EquipoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__MiembrosE__Equip__49C3F6B7");
+                .HasConstraintName("FK__MiembrosE__Equip__656C112C");
 
             entity.HasOne(d => d.Miembro).WithMany(p => p.MiembrosEquipos)
                 .HasForeignKey(d => d.MiembroId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__MiembrosE__Miemb__48CFD27E");
+                .HasConstraintName("FK__MiembrosE__Miemb__6477ECF3");
         });
 
         modelBuilder.Entity<ParticipanteEvento>(entity =>
         {
-            entity.HasKey(e => e.ParticipanteEventoId).HasName("PK__Particip__0DD451897CAAAB51");
+            entity.HasKey(e => e.ParticipanteEventoId).HasName("PK__Particip__0DD451890407CCDA");
 
             entity.ToTable("Participante_Evento");
 
             entity.HasOne(d => d.Participante).WithMany(p => p.ParticipanteEventos)
                 .HasForeignKey(d => d.ParticipanteId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Participa__Parti__4316F928");
+                .HasConstraintName("FK__Participa__Parti__5EBF139D");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.UsuarioId).HasName("PK__Usuario__2B3DE7B8449FFA83");
+            entity.HasKey(e => e.UsuarioId).HasName("PK__Usuario__2B3DE7B88264ACC2");
 
             entity.ToTable("Usuario");
 
             entity.Property(e => e.Cargo)
                 .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Contrasenha)
+                .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.Correo)
                 .HasMaxLength(50)

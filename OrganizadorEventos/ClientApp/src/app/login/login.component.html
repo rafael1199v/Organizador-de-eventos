@@ -22,26 +22,26 @@
 				<h3>Iniciar sesión</h3>
 			</div>
 			<div class="card-body">
-				<form id="loginForm">
+				<form [formGroup]="loginForm">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="Usuario" name="username" autocomplete="username" required
+						<input formControlName ="username" type="text" class="form-control" placeholder="Usuario" name="username" autocomplete="username" required
                         title="El usuario debe tener entre 4 y 15 caracteres, solo letras y números.">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" autocomplete="current-password" required 
+						<input formControlName ="password" type="password" class="form-control" placeholder="Contraseña" name="password" id="password" autocomplete="current-password" required 
 						title="Tu contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.">
 					</div>
 					<div class="row align-items-center remember">
 						<input type="checkbox" name="remember">Recordarme
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn float-right login_btn">Login</button>
+						<button type="submit" class="btn float-right login_btn" (click)="onLogin()">Login</button>
 					</div>
 				</form>
 			</div>

@@ -15,6 +15,8 @@ public partial class Usuario
 
     public string Correo { get; set; } = null!;
 
+    public string Contrasenha { get; set; } = null!;
+
     public string Telefono { get; set; } = null!;
 
     public string Organizacion { get; set; } = null!;
@@ -30,4 +32,10 @@ public partial class Usuario
     public virtual ICollection<MiembrosEquipo> MiembrosEquipos { get; } = new List<MiembrosEquipo>();
 
     public virtual ICollection<ParticipanteEvento> ParticipanteEventos { get; } = new List<ParticipanteEvento>();
+}
+
+
+public class UsuarioLogin{
+    public string? Correo {get; set;}
+    public string? Contrasenha {get; set;}
 }
