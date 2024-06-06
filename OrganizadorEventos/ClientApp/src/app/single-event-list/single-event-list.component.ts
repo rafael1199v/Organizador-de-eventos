@@ -26,6 +26,7 @@ export class SingleEventListComponent {
 
 interface Evento{
   eventoId: number
+  titulo: string,
   descripcion: string,
   inicio: Date,
   finalizacion: Date,

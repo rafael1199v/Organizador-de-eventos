@@ -7,6 +7,8 @@ public partial class Evento
 {
     public int EventoId { get; set; }
 
+    public string Titulo { get; set; } = null!;
+
     public string Descripcion { get; set; } = null!;
 
     public DateTime Inicio { get; set; }
