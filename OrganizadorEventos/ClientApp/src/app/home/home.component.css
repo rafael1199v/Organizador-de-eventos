@@ -18,3 +18,7 @@
   background-color: black;
   color: gray;
 }
+
+summary{
+  cursor:text;
+}

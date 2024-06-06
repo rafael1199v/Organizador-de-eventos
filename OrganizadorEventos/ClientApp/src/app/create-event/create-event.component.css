@@ -44,6 +44,7 @@ body {
 
 .formbold-form-title {
     margin-bottom: 30px;
+    margin-top: -50px;
 }
 .formbold-form-title h2 {
     font-weight: 600;
@@ -87,7 +88,6 @@ body {
     border-radius: 5px;
     border: 1px solid #dde3ec;
     background: #ffffff;
-    font-weight: 500;
     font-size: 14px;
     color: #536387;
     outline: none;
