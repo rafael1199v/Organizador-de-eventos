@@ -20,7 +20,7 @@ export class SingleEventListComponent {
 
 
   getInformation(){
-    return this.http.get<any>(this.baseUrl + 'evento');
+    return this.http.get<any>(this.baseUrl + 'evento/' + 'individual');
   }
 }
 
@@ -35,3 +35,5 @@ interface Evento{
   historials: any,
   organizador: any
 }
+
+

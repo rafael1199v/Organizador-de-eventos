@@ -14,14 +14,6 @@ public class UsuarioController: ControllerBase
         _appDbContext = appDbContext;
     }
 
-    // [HttpGet]
-    // public IEnumerable<Usuario> GetAllUsuarios()
-    // {
-    //     var servicio = new UsuarioService();
-    //     return servicio.GetUsuarios();
-
-    // }
-
     [HttpPost]
     public async Task<IActionResult> Autenticar([FromBody] UsuarioLogin user)
     {
@@ -35,6 +27,8 @@ public class UsuarioController: ControllerBase
         {
             Mensaje = "Autenticacion correcta"
         });
+
+        
     }
 }
 

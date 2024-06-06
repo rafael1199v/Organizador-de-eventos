@@ -5,18 +5,11 @@
 <!-- Debería haber aquí una clase de while para buscar todos los eventos disponibles -->
 <!-- ejemplo de tarjetas: -->
 <div class="arr">
-    <button class="card">
-        <div class="container">
-          <h4><b>Título</b></h4>
-          <p>Ubicación: Ubicación</p>
-          <p class="details-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id maximus sapien, eu sodales purus. Suspendisse potenti. Sed dolor ante, semper nec nulla id, euismod pretium tellus. Mauris bibendum, massa nec ultrices bibendum, eros velit dictum arcu, non laoreet nisl lectus a neque. Aliquam iaculis leo lacus, ac elementum elit gravida a. Praesent tempus ultricies purus, a venenatis sem. Curabitur fermentum metus sed feugiat mattis.</p>
-        </div>
-    </button>
-    <button class="card">
-        <div class="container">
-          <h4><b>Título</b></h4>
-          <p>Ubicación: Ubicación</p>
-          <p class="details-text">Detalles detalles y más detalles (a partir de 5 líneas, se oculta automáticamente)</p>
-        </div>
-    </button>
+  <button class="card" *ngFor="let evento of eventosDisponibles">
+    <div class="container">
+      <h4><b>{{evento.titulo}}</b></h4>
+      <p>{{evento.lugarEvento}}</p>
+      <p class="details-text">{{ evento.descripcion}}</p>
+    </div>
+  </button>
 </div>

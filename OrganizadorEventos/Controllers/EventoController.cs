@@ -16,16 +16,22 @@ public class EventoController : ControllerBase
     }
 
 
-    [HttpGet]
+    [HttpGet("individual")]
 
     public IEnumerable<Evento> getEventosIndividuales()
     {
 
         var eventos = new EventoService(_appDbContext);
-        IEnumerable<Evento> a = eventos.getAllEventosIndividuales();
-        return a;
+        return eventos.getAllEventosIndividuales();
 
     }
 
+
+    [HttpGet("grupo")]
+    public IEnumerable<Evento> getEventosGrupales()
+    {
+        var eventos = new EventoService(_appDbContext);
+        return eventos.getAllEventosGrupales();
+    }
     
 }

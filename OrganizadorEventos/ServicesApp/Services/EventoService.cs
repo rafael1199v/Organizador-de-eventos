@@ -16,11 +16,27 @@ public class EventoService
     public IEnumerable<Evento> getAllEventosIndividuales()
     {
         var eventosIndividualesDb = _appDbContext.Eventos
+                                    .Where(evento => evento.PorEquipos == false)
                                     .Include(evento => evento.Historials)
                                     .Include(evento => evento.Organizador)
                                     .ToList();
 
         return eventosIndividualesDb;
+    }
+
+
+
+    public IEnumerable<Evento> getAllEventosGrupales()
+    {
+        var eventosgrupalesDb = _appDbContext.Eventos
+                                    .Where(evento => evento.PorEquipos == true)
+                                    .Include(evento => evento.Historials)
+                                    .Include(evento => evento.Organizador)
+                                    .ToList();
+
+
+        return eventosgrupalesDb;
+
     }
 
 
