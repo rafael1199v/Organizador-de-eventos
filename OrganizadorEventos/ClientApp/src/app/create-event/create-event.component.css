@@ -17,7 +17,7 @@ body {
     opacity: 0;
 }
 .formbold-stroke-current {
-    stroke: currentColor;
+    stroke: black;
 }
 #supportCheckbox:checked ~ div span {
     opacity: 1;
@@ -54,7 +54,7 @@ body {
 .formbold-form-title p {
     font-size: 16px;
     line-height: 24px;
-    color: #536387;
+    color: #07074d;
     margin-top: 12px;
 }
 
