@@ -15,21 +15,14 @@ export class SingleEventListComponent {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string){
     this.getInformation().subscribe(result => {
       this.eventosDisponibles = result;
-      console.log(result);
     }, error => console.log(error));
   }
-
-  OnInit(): void{
-   
-  }
-
 
 
   getInformation(){
     return this.http.get<any>(this.baseUrl + 'evento');
   }
 }
-
 
 interface Evento{
   eventoId: number
