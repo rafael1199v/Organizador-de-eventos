@@ -41,23 +41,13 @@
             <label for="dateStart" class="formbold-form-label">
               Fecha y hora de inicio
             </label>
-            <input
-              type="text"
-              name="dateStart"
-              id="dateStart"
-              class="formbold-form-input"
-            />
+            <input type="datetime-local" id="dateStart" name="dateStart" class="datetime-get">
           </div>
           <div>
             <label for="dateEnd" class="formbold-form-label">
                 Fecha y hora de finalizacion
             </label>
-            <input
-              type="text"
-              name="dateEnd"
-              id="dateEnd"
-              class="formbold-form-input"
-            />
+            <input type="datetime-local" id="dateEnd" name="dateEnd" class="datetime-get">
           </div>
         </div>
 
@@ -65,12 +55,14 @@
             <label for="details" class="formbold-form-label">
                 Detalles
             </label>
-            <input
+            <textarea
                 type="text"
                 name="details"
                 id="details"
-                class="formbold-form-input-big"
-            />
+                class="formbold-form-textarea-big"
+                style="height:200px"
+                autocomplete="off"
+            ></textarea>
             </div>
   
         <div class="formbold-checkbox-wrapper">
@@ -101,7 +93,6 @@
             Evento en grupo
           </label>
         </div>
-  
         <button class="formbold-btn">Crear evento</button>
       </form>
     </div>

@@ -39,7 +39,7 @@ body {
 }
 
 .formbold-img {
-    margin-bottom: 45px;
+    margin-bottom: 4px;
 }
 
 .formbold-form-title {
@@ -79,11 +79,11 @@ body {
     outline: none;
     resize: none;
 }
-.formbold-form-input-big { /*aquí hay que editar algo para que encaje el texto grande, no se bien qué xd*/
+.formbold-form-textarea-big { /*aquí hay que editar algo para que encaje el texto grande, no se bien qué xd*/
     text-align: left;
     width: 100%;
     height: 500px;
-    padding: 13px 22px;
+    padding: 13px 13px;
     border-radius: 5px;
     border: 1px solid #dde3ec;
     background: #ffffff;
@@ -91,7 +91,7 @@ body {
     font-size: 14px;
     color: #536387;
     outline: none;
-    resize: vertical;
+    resize: none;
     line-height: normal;
 }
 .formbold-form-input:focus {
@@ -154,4 +154,11 @@ body {
 }
 .formbold-btn:hover {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.datetime-get{
+    padding: 13px 20px;
+    border: 1px solid #dde3ec;
+    border-radius: 5px;
+    color: #536387;
 }
