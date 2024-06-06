@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
+import { Inject } from '@angular/core';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-single-event-list',
@@ -6,9 +9,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./single-event-list.component.css']
 })
 export class SingleEventListComponent {
-  public currentCount = 0;
 
-  public incrementCounter() {
-    this.currentCount++;
+  eventosDisponibles: Evento[] = [];
+  
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string){
+    this.getInformation().subscribe(result => {
+      this.eventosDisponibles = result;
+      console.log(result);
+    }, error => console.log(error));
   }
+
+  OnInit(): void{
+   
+  }
+
+
+
+  getInformation(){
+    return this.http.get<any>(this.baseUrl + 'evento');
+  }
+}
+
+
+interface Evento{
+  eventoId: number
+  descripcion: string,
+  inicio: Date,
+  finalizacion: Date,
+  lugarEvento: string,
+  organizadorId: number,
+  historials: any,
+  organizador: any
 }
