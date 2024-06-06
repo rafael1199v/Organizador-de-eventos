@@ -1,96 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Login Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login Page</title>
    
-	<!-- Bootstrap 4 CDN -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- Bootstrap 4 CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     
-    <!-- Fontawesome CDN -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <!-- Fontawesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
-	<!-- Custom styles -->
-	<link rel="stylesheet" type="text/css" href="login.component.css">
+  <!-- Custom styles -->
+  <link rel="stylesheet" type="text/css" href="login.component.css">
 </head>
 <body>
 <div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3>Iniciar sesión</h3>
-			</div>
-			<div class="card-body">
-				<form [formGroup]="loginForm">
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input formControlName ="username" type="text" class="form-control" placeholder="Usuario" name="username" autocomplete="username" required
-                        title="El usuario debe tener entre 4 y 15 caracteres, solo letras y números.">
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input formControlName ="password" type="password" class="form-control" placeholder="Contraseña" name="password" id="password" autocomplete="current-password" required 
-						title="Tu contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox" name="remember">Recordarme
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn float-right login_btn" (click)="onLogin()">Login</button>
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					¿No tienes una cuenta?<a href="#">Regístrate</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">¿Olvidaste tu contraseña?</a>
-				</div>
-			</div>
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Iniciar sesión</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="loginForm">
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Correo electrónico"
+              name="email"
+              autocomplete="email"
+              required
+              title="Introduce un correo electrónico válido."
+            />
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              placeholder="Contraseña"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              required
+              title="Tu contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial."
+            />
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn float-right login_btn" (click)="onLogin()">Login</button>
+          </div>
+        </form>
+      </div>
+	  <div class="card-footer">
+		<div class="d-flex justify-content-center links">
+		  ¿No tienes una cuenta? <a routerLink="/register" routerLinkActive="active">Regístrate</a>
 		</div>
-	</div>
+	  </div>
+    </div>
+  </div>
 </div>
-
-<!-- jQuery and Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<!-- Form Validation Script -->
-<script>
-$(document).ready(function(){
-    $('#loginForm').on('submit', function(e) {
-        var isValid = true;
-        var password = $('#password').val();
-        var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-        // Check required fields
-        $(this).find('input[required]').each(function() {
-            if ($(this).val() === '') {
-                isValid = false;
-                $(this).addClass('is-invalid');
-            } else {
-                $(this).removeClass('is-invalid');
-            }
-        });
-
-        // Check password pattern
-        if (!passwordPattern.test(password)) {
-            isValid = false;
-            $('#password').addClass('is-invalid');
-        } else {
-            $('#password').removeClass('is-invalid');
-        }
-
-        if (!isValid) {
-            e.preventDefault();
-        }
-    });
-});
-</script>
-</body>
-</html>

@@ -14,6 +14,7 @@ import { SingleEventListComponent } from './single-event-list/single-event-list.
 import { TeamEventListComponent } from './team-event-list/team-event-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { EventDetailsComponent } from './event-details/event-details.component';
       { path: 'team-event-list', component: TeamEventListComponent},
       { path: 'create-event', component: CreateEventComponent},
       { path: 'event-details', component: EventDetailsComponent}
-    ])
+    ]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

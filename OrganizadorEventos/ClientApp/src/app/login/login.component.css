@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
 }
 
 .container {
@@ -12,59 +12,51 @@ font-family: 'Numans', sans-serif;
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  .card {
-    height: 370px;
+}
+
+.card {
+    height: auto; /* Cambiado a auto para adaptarse al contenido */
     width: 400px;
     background-color: rgba(0, 0, 0, 0.5) !important;
-  }
-  
-
-.card-header h3{
-color: white;
+    padding: 20px; /* Agregado un relleno para separar los elementos */
+    box-sizing: border-box; /* Incluido para asegurar que el padding sea considerado en el tamaño total */
 }
 
-.input-group-prepend span{
-width: 50px;
-background-color: #FFC312;
-color: black;
-border:0 !important;
+.card-header h3 {
+    color: white;
 }
 
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
-
+.input-group-prepend span {
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border: 0 !important;
 }
 
-.remember{
-color: white;
+.input-group {
+    margin-bottom: 15px; /* Ajusta el espacio entre los campos */
 }
 
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
+.form-control {
+    width: 100%; /* Ajusta el ancho de los campos de entrada al 100% del contenedor */
 }
 
-.login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
+.login_btn {
+    color: black;
+    background-color: #FFC312;
+    width: 100%; /* Ajusta el ancho del botón de inicio de sesión al 100% del contenedor */
+    margin-top: 15px; /* Agregado espacio superior para separar el botón del formulario */
 }
 
-.login_btn:hover{
-color: black;
-background-color: white;
+.login_btn:hover {
+    color: black;
+    background-color: white;
 }
 
-.links{
-color: white;
+.links {
+    color: white;
 }
 
-.links a{
-margin-left: 4px;
+.links a {
+    margin-left: 4px;
 }

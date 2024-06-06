@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
   shouldShowNavbar(url: string): boolean {
     // Define las rutas donde NO quieres mostrar el navbar
-    const noNavbarRoutes = ['/login', '/register'];
+    const noNavbarRoutes = ['/register','/login' ];
     return !noNavbarRoutes.includes(url);
   }
 }
