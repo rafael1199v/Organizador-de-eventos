@@ -18,7 +18,6 @@
     Cuando participes en un evento, el organizador marcará tu asistencia, otorgándote un certificado de participación. (No implementado)
 </summary>
 
-<br>
 <strong>IDs:</strong>
 <summary>name: Nombre de un evento</summary>
 <summary>location: Ubicacion</summary>
@@ -28,4 +27,6 @@
 <summary>isTeamEvent: bool que define si es o no un evento de equipos</summary>
 
 
-<button class="logout-btn">Cerrar sesión (no implementado)</button>
+<a [routerLinkActive]="['link-active']" [routerLink]="['/login']">
+    <button class="logout-btn">Cerrar sesión</button>
+</a>
