@@ -18,8 +18,8 @@
 <div class="container">
   <div class="d-flex justify-content-center h-100">
     <div class="card">
-      <div class="card-header">
-        <h3>Iniciar sesión</h3>
+      <div class="card-header text-center">
+        <h2>Iniciar sesión</h2>
       </div>
       <div class="card-body">
         <form [formGroup]="loginForm">
@@ -55,15 +55,16 @@
             />
           </div>
           <div class="form-group">
-            <button type="button" class="btn float-right login_btn" (click)="onLogin()">Login</button>
+            <button type="submit" class="btn float-right login_btn" (click)="onLogin()">Login</button>
           </div>
         </form>
       </div>
 	  <div class="card-footer">
-		<div class="d-flex justify-content-center links">
-		  ¿No tienes una cuenta? <a routerLink="/register" routerLinkActive="active">Regístrate</a>
-		</div>
-	  </div>
+		  <div class="d-flex justify-content-center links">
+		    ¿No tienes una cuenta? <a routerLink="/register" routerLinkActive="active">Regístrate.</a>
+		    </div>
+	    </div>
     </div>
   </div>
 </div>
+<!-- real -->

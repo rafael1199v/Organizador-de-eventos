@@ -19,3 +19,20 @@
     left: 0;
     z-index: 1;
 }
+
+.input-group-text{
+    background-color: #6a64f1;
+    color: black;
+}
+
+.container{
+    margin-top: 15%;
+}
+
+h2{
+    margin-bottom: 35px;
+}
+
+p{
+    margin-top: 25px;
+}
