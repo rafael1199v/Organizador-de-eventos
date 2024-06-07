@@ -16,6 +16,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserComponent } from './user/user.component';
+import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 
 
@@ -31,6 +32,7 @@ import { MyEventsComponent } from './my-events/my-events.component';
     CreateEventComponent,
     EventDetailsComponent,
     UserComponent,
+    CreateTeamComponent,
     MyEventsComponent,
   ],
   imports: [
@@ -47,6 +49,7 @@ import { MyEventsComponent } from './my-events/my-events.component';
       { path: 'create-event', component: CreateEventComponent},
       { path: 'event-details/:id', component: EventDetailsComponent},
       { path: 'user', component: UserComponent},
+      { path: 'create-team', component: CreateTeamComponent},
       { path: 'my-events', component: MyEventsComponent}
     ]),
     AppRoutingModule

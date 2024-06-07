@@ -1,0 +1,63 @@
+.double-col{
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.card{
+    margin: 10px;
+    height: 60px;
+    flex: 0 0 20%;
+    border-color: transparent;
+}
+
+.custom-select{
+    margin-left: 25%;
+}
+
+.participation-btn {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #6a64f1;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+.participation-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+    background-color: #5e57dd;
+}
+
+.formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 550px;
+    width: 100%;
+    background: rgb(201, 200, 210);
+    border-radius: 5px;
+    border-color: black;
+    border-width: 5px;
+    padding: 40px;
+}
+
+.formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+}
+
+.number-box{
+    height: 25px;
+    width: 50px;
+    margin-top: 1px;
+}
+
+.text-box{
+    width: 69%;
+    height: 30px;
+    margin-top: -1px;
+}
