@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Inject } from '@angular/core';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { Inject } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -28,7 +29,11 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid){
-      this.router.navigate(['/home']);
+      this.login(this.loginForm.value).subscribe(result => {
+        localStorage.setItem("user", JSON.stringify(result))
+        this.router.navigate(['/home']);
+      });
+      
     } else {
       console.log('error');
     }
@@ -39,6 +44,6 @@ export class LoginComponent implements OnInit {
       correo: this.loginForm.value.email, 
       contrasenha: this.loginForm.value.password
     };
-    return this.http.post<any>(this.baseUrl + 'usuario', user);
+    return this.http.post<number>(this.baseUrl + 'usuario', user);
   }
 }

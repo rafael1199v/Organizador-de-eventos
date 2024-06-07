@@ -12,4 +12,16 @@ public class UsuarioService
         else return true;
 
     }
+
+
+
+    public Usuario? getUsuario(OrganizadorEventosContext _appDbContext ,string? correo, string? Contrasenha)
+    {
+        var user = _appDbContext.Usuarios
+                    .Where(evento => evento.Correo == correo && evento.Contrasenha == Contrasenha)
+                    .FirstOrDefault();
+
+
+        return user;
+    }
 }

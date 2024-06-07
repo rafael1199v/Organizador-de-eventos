@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, Event } from '@angular/router';
+import { Router, NavigationEnd, Event} from '@angular/router';
 import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'app';
   showNavbar = true;
+  
 
   constructor(private router: Router) {}
 
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit {
 
   shouldShowNavbar(url: string): boolean {
     // Define las rutas donde NO quieres mostrar el navbar
-    const noNavbarRoutes = ['/register','/login' ];
+    const noNavbarRoutes = ['/register','/login'];
     return !noNavbarRoutes.includes(url);
   }
 }

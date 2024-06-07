@@ -37,7 +37,7 @@ import { UserComponent } from './user/user.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent},
       { path: 'register', component: RegisterComponent},
       { path: 'single-event-list', component: SingleEventListComponent},

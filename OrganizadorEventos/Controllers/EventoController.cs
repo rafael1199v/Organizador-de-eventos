@@ -18,20 +18,29 @@ public class EventoController : ControllerBase
 
     [HttpGet("individual")]
 
-    public IEnumerable<Evento> getEventosIndividuales()
+    public IActionResult getEventosIndividuales()
     {
 
         var eventos = new EventoService(_appDbContext);
-        return eventos.getAllEventosIndividuales();
+        return Ok(eventos.getAllEventosIndividuales());
 
     }
 
 
     [HttpGet("grupo")]
-    public IEnumerable<Evento> getEventosGrupales()
+    public IActionResult getEventosGrupales()
     {
         var eventos = new EventoService(_appDbContext);
-        return eventos.getAllEventosGrupales();
+        return Ok(eventos.getAllEventosGrupales());
+    }
+
+
+    [HttpGet("{id}")]
+
+    public IActionResult getEvento(int id)
+    {
+        var eventosService = new EventoService(_appDbContext);
+        return Ok(eventosService.getDetalleEvento(id));
     }
     
 }

@@ -21,18 +21,18 @@ public class UsuarioController: ControllerBase
 
         var verificacion = new UsuarioService();
         
-        if(verificacion.AutenticarUsuario(_appDbContext, user))
+        if(!verificacion.AutenticarUsuario(_appDbContext, user))
         {
             return NotFound(new {Mensaje = "Usuario no encontrado"});
         }
 
-        return Ok(new
-        {
-            Mensaje = "Autenticacion correcta"
-        });
+        return Ok(verificacion.getUsuario(_appDbContext, user.Correo ,user.Contrasenha));
 
         
     }
+
+
+   
 }
 
 

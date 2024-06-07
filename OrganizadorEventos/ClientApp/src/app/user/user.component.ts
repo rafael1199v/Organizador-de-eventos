@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Usuario } from '../models/interfaces/Evento.interface';
 
 @Component({
   selector: 'app-home',
@@ -6,4 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+
+  usuario!: Usuario;
+
+  constructor(){
+    this.usuario = JSON.parse(localStorage.getItem("user") || '');
+    console.log(this.usuario)
+  }
+
+  
 }

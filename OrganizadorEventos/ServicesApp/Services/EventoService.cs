@@ -1,5 +1,3 @@
-using System.Diagnostics.Metrics;
-using System.Diagnostics.Tracing;
 using Microsoft.EntityFrameworkCore;
 using OrganizadorEventos.ServicesApp.Models;
 
@@ -37,6 +35,18 @@ public class EventoService
 
         return eventosgrupalesDb;
 
+    }
+
+    public Evento getDetalleEvento(int id)
+    {   
+        var eventoDetalle = _appDbContext.Eventos
+                            .Where(evento => evento.EventoId == id)
+                            .Include(evento => evento.Historials)
+                            .Include(evento => evento.Organizador)
+                            .First();
+
+
+        return eventoDetalle;                   
     }
 
 
