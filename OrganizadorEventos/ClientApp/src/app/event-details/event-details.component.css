@@ -1,0 +1,33 @@
+.double-col{
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.card{
+    margin: 10px;
+    height: 60px;
+    flex: 0 0 20%;
+    border-color: transparent;
+}
+
+.custom-select{
+    margin-left: 25%;
+}
+
+.participation-btn {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #6a64f1;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+.participation-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+    background-color: #5e57dd;
+}

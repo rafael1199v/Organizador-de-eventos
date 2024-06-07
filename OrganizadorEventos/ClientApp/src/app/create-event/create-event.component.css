@@ -151,9 +151,11 @@ body {
     color: white;
     cursor: pointer;
     margin-top: 25px;
+    transition: 0.3s;
 }
 .formbold-btn:hover {
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+    background-color: #5e57dd;
 }
 
 .datetime-get{
