@@ -23,6 +23,6 @@ export class EventDetailsComponent {
 
 
   getDetalleEvento(){
-    return this.http.get<Evento>(this.baseUrl + 'evento/' + this.activatedRoute.snapshot.paramMap.get('id'))
+    return this.http.get<Evento>(this.baseUrl + 'evento/detalle/' + this.activatedRoute.snapshot.paramMap.get('id'))
   }
 }

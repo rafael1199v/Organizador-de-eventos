@@ -50,4 +50,15 @@ public class EventoService
     }
 
 
+
+    public IEnumerable<Evento> getEventosOrganizador(int id)
+    {
+        var eventos = _appDbContext.Eventos
+                        .Where(evento => evento.OrganizadorId == id)
+                        .ToList();
+
+        return eventos;
+    }
+
+
 }

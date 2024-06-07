@@ -35,12 +35,20 @@ public class EventoController : ControllerBase
     }
 
 
-    [HttpGet("{id}")]
+    [HttpGet("detalle/{id}")]
 
     public IActionResult getEvento(int id)
     {
         var eventosService = new EventoService(_appDbContext);
         return Ok(eventosService.getDetalleEvento(id));
+    }
+
+
+    [HttpGet("{id}")]
+    public IActionResult getEventosOrganizador(int id)
+    {
+        var eventosService = new EventoService(_appDbContext);
+        return Ok(eventosService.getEventosOrganizador(id));
     }
     
 }
