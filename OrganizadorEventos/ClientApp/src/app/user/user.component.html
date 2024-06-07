@@ -29,6 +29,14 @@
         <strong>Cargo:</strong>
         {{usuario.cargo}}
     </summary>
+    <summary>
+        <strong>Numero de eventos en los que has participado: </strong>
+        {{usuario.eventos.length}}
+    </summary>
+    <summary>
+        <strong>Numero de equipos a los has pertenecido</strong>
+        {{usuario.equipos.length}}
+    </summary>
 </div>
 
 <a [routerLinkActive]="['link-active']" [routerLink]="['/login']">

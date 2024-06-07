@@ -12,7 +12,6 @@ export class UserComponent {
 
   constructor(){
     this.usuario = JSON.parse(localStorage.getItem("user") || '');
-    console.log(this.usuario)
   }
 
   
