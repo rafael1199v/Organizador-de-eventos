@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Evento } from '../models/interfaces/Evento.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-event-list',
@@ -11,7 +12,7 @@ export class TeamEventListComponent {
 
   eventosDisponibles: Evento[] = [];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string)
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router)
   {
     this.getInformation().subscribe(result =>{
       this.eventosDisponibles = result;
@@ -21,5 +22,9 @@ export class TeamEventListComponent {
 
   getInformation(){
     return this.http.get<any>(this.baseUrl + 'evento/' + 'grupo');
+  }
+
+  getDetallesEvento(idEvento: number){
+    this.router.navigate(['/event-details', idEvento])
   }
 }

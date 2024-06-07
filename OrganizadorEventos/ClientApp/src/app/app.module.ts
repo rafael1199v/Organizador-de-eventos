@@ -43,7 +43,7 @@ import { UserComponent } from './user/user.component';
       { path: 'single-event-list', component: SingleEventListComponent},
       { path: 'team-event-list', component: TeamEventListComponent},
       { path: 'create-event', component: CreateEventComponent},
-      { path: 'event-details', component: EventDetailsComponent},
+      { path: 'event-details/:id', component: EventDetailsComponent},
       { path: 'user', component: UserComponent}
     ]),
     AppRoutingModule

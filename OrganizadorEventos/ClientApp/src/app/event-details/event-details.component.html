@@ -1,22 +1,22 @@
-<h1 class="text-center">Título del evento</h1>
+<h1 class="text-center">{{evento.titulo}}</h1>
 <p class="text-center">
     <strong>Organiazdo por:</strong>
-    Nombre del organizador
+    {{evento.organizador.nombre}}
 </p>
-<p class="text-center">Detalles</p>
+<p class="text-center">{{evento.descripcion}}</p>
 <p class="text-center">
     <strong>Ubicación:</strong>
-    Ubicación
+    {{evento.lugarEvento}}
 </p>
 
 <div class="double-col">
     <div class="card">
         <strong class="text-center">Hora inicio:</strong>
-        <p class="text-center">00/00/0000 00:00</p>
+        <p class="text-center">{{evento.inicio}}</p>
     </div>
     <div class="card">
         <strong class="text-center">Hora finalización:</strong>
-        <p class="text-center">00/00/0000 00:00</p>
+        <p class="text-center">{{evento.finalizacion}}</p>
     </div>
 </div>
 

@@ -5,7 +5,7 @@
 <!-- Debería haber aquí una clase de while para buscar todos los eventos disponibles -->
 <!-- ejemplo de tarjetas: -->
 <div class="arr">
-    <button class="card" *ngFor="let evento of eventosDisponibles">
+    <button class="card" *ngFor="let evento of eventosDisponibles" (click)="getDetallesEvento(evento.eventoId)">
       <div class="container">
         <h4><b>{{evento.titulo}}</b></h4>
         <p>{{evento.lugarEvento}}</p>
