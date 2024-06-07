@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { Inject } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Evento } from '../models/interfaces/Evento.interface';
 
 @Component({
   selector: 'app-single-event-list',
@@ -24,16 +24,6 @@ export class SingleEventListComponent {
   }
 }
 
-interface Evento{
-  eventoId: number
-  titulo: string,
-  descripcion: string,
-  inicio: Date,
-  finalizacion: Date,
-  lugarEvento: string,
-  organizadorId: number,
-  historials: any,
-  organizador: any
-}
+
 
 

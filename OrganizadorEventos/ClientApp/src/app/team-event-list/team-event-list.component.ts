@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Evento } from '../models/interfaces/Evento.interface';
 
 @Component({
   selector: 'app-team-event-list',
@@ -21,17 +22,4 @@ export class TeamEventListComponent {
   getInformation(){
     return this.http.get<any>(this.baseUrl + 'evento/' + 'grupo');
   }
-}
-
-
-interface Evento{
-  eventoId: number
-  titulo: string,
-  descripcion: string,
-  inicio: Date,
-  finalizacion: Date,
-  lugarEvento: string,
-  organizadorId: number,
-  historials: any,
-  organizador: any
 }
