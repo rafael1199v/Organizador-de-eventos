@@ -80,7 +80,7 @@ body {
     outline: none;
     resize: none;
 }
-.formbold-form-textarea-big { /*aquí hay que editar algo para que encaje el texto grande, no se bien qué xd*/
+.formbold-form-textarea-big {
     text-align: left;
     width: 100%;
     height: 500px;
