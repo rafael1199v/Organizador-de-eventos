@@ -18,6 +18,12 @@
     background-color: #5e57dd;
 }
 
+.checker{
+  float: right;
+  margin-left: 10px;
+  margin-top: 5px
+}
+
 .checkbox-wrapper-46 input[type="checkbox"] {
     display: none;
     visibility: hidden;
@@ -89,7 +95,8 @@
     opacity: 0;
     transition: all 0.6s ease;
   }
-  
+
+ 
   @keyframes wave-46 {
     50% {
       transform: scale(0.9);
