@@ -1,7 +1,7 @@
 
 <h1>Eventos en curso</h1>
 <div class="arr">
-    <button class="card" *ngFor="let evento of eventosEnCurso" (click)="participacionEvento(evento.eventoId)">
+    <button class="card" *ngFor="let evento of eventosEnCurso" (click)="participacionEvento(evento.eventoId, evento.porEquipos)">
       <div class="container">
         <h4><b>{{evento?.titulo}}</b></h4>
         <p>{{evento?.lugarEvento}}</p>

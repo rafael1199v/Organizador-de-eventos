@@ -34,8 +34,16 @@ public partial class Usuario
     public virtual ICollection<ParticipanteEvento> ParticipanteEventos { get; } = new List<ParticipanteEvento>();
 }
 
-
 public class UsuarioLogin{
     public string? Correo {get; set;}
     public string? Contrasenha {get; set;}
+}
+
+public class UsuarioEvento{
+    public int UsuarioId {get; set;}
+    public string? Nombre {get; set;}
+    public string? Correo {get; set;}
+    public string? Organizacion {get; set;}
+    public bool Asistencia {get; set;}
+
 }

@@ -21,7 +21,11 @@ public partial class Evento
 
     public int OrganizadorId { get; set; }
 
+    public virtual ICollection<EquiposEvento> EquiposEventos { get; } = new List<EquiposEvento>();
+
     public virtual ICollection<Historial> Historials { get; } = new List<Historial>();
 
     public virtual Usuario Organizador { get; set; } = null!;
+
+    public virtual ICollection<ParticipanteEvento> ParticipanteEventos { get; } = new List<ParticipanteEvento>();
 }

@@ -27,8 +27,15 @@ public class UsuarioController: ControllerBase
         }
 
         return Ok(verificacion.getUsuario(_appDbContext, user.Correo ,user.Contrasenha));
+    }
 
-        
+
+    [HttpGet("participantes/{id}")]
+    public IActionResult getPartipanteEvento(int id)
+    {
+        var usuarioService = new UsuarioService();
+
+        return Ok(usuarioService.getUsuariosEvento(_appDbContext ,id)); 
     }
 
 

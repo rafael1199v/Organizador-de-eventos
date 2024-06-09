@@ -44,8 +44,8 @@ export class MyEventsComponent {
   }
 
 
-  participacionEvento(idEvento: number){
-    this.router.navigate(['/event-participation', idEvento])
+  participacionEvento(idEvento: number, porEquipos: Boolean){
+    this.router.navigate(['/event-participation', idEvento, porEquipos])
   }
   
 

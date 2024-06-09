@@ -53,7 +53,7 @@ import { EventParticipationComponent } from './event-participation/event-partici
       { path: 'user', component: UserComponent},
       { path: 'create-team', component: CreateTeamComponent},
       { path: 'my-events', component: MyEventsComponent},
-      { path: 'event-participation/:id', component: EventParticipationComponent}
+      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent}
     ]),
     AppRoutingModule
   ],

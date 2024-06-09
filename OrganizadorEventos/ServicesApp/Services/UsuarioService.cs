@@ -5,10 +5,10 @@ public class UsuarioService
     public bool AutenticarUsuario(OrganizadorEventosContext _appDbContext, UsuarioLogin user)
     {
 
-        var User = _appDbContext.Usuarios.FirstOrDefault(x=> x.Correo == user.Correo 
+        var usuario = _appDbContext.Usuarios.FirstOrDefault(x=> x.Correo == user.Correo 
                                                         && x.Contrasenha == user.Contrasenha);
 
-        if(User == null) return false;
+        if(usuario == null) return false;
         else return true;
 
     }
@@ -17,11 +17,28 @@ public class UsuarioService
 
     public Usuario? getUsuario(OrganizadorEventosContext _appDbContext ,string? correo, string? Contrasenha)
     {
-        var user = _appDbContext.Usuarios
+        var usuario = _appDbContext.Usuarios
                     .Where(evento => evento.Correo == correo && evento.Contrasenha == Contrasenha)
                     .FirstOrDefault();
 
 
-        return user;
+        return usuario;
+    }
+
+
+    public IEnumerable<UsuarioEvento> getUsuariosEvento(OrganizadorEventosContext _appDbContext, int eventoId)
+    {
+        var usuarios = from usuario in _appDbContext.Usuarios
+                        join participante in _appDbContext.ParticipanteEventos on usuario.UsuarioId equals participante.ParticipanteId
+                        where participante.EventoId == eventoId
+                        select new UsuarioEvento{
+                            UsuarioId = usuario.UsuarioId,
+                            Nombre = usuario.Nombre,
+                            Correo = usuario.Correo,
+                            Organizacion = usuario.Organizacion,
+                            Asistencia = participante.Asistencia
+                        };
+
+        return usuarios.ToList();
     }
 }

@@ -6,14 +6,14 @@
 </div>
 
 <div style="margin-top: 25px;">
-    <div class="text-center" style="margin:5px;" *ngFor="let item of [].constructor(Quantity); let i = index">
+    <div class="text-center" style="margin:5px;" *ngFor="let participante of Participantes; let i = index">
         <div class="checkbox-wrapper-46">
-            <input type="checkbox" id="{{i}}" class="inp-cbx" />
+            <input type="checkbox" id="{{i}}" class="inp-cbx" [checked]="participante.asistencia"/>
             <label for="{{i}}" class="cbx"
               ><span>
                 <svg viewBox="0 0 12 10" height="10px" width="12px">
                   <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
-              ><span>Usuario {{i+1}}</span>
+              ><span>{{i + 1}} {{participante?.nombre}}: {{participante?.correo}}</span>
             </label>
         </div>
     </div>
