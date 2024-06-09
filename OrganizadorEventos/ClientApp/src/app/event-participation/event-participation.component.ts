@@ -8,5 +8,6 @@ import { Usuario } from '../models/interfaces/Evento.interface';
   })
   export class EventParticipationComponent {
     Participantes: Usuario[] = []
+    Quantity:number = 5
   }
   
