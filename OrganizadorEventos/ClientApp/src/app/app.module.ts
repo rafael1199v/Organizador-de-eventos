@@ -19,6 +19,7 @@ import { UserComponent } from './user/user.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { EventParticipationComponent } from './event-participation/event-participation.component';
+import { HistoryUserComponent } from './history-user/history-user.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { EventParticipationComponent } from './event-participation/event-partici
     UserComponent,
     CreateTeamComponent,
     MyEventsComponent,
-    EventParticipationComponent
+    EventParticipationComponent,
+    HistoryUserComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
