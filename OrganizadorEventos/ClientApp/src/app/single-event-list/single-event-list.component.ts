@@ -21,7 +21,7 @@ export class SingleEventListComponent {
 
 
   getInformation(){
-    return this.http.get<any>(this.baseUrl + 'evento/' + 'individual');
+    return this.http.get<Evento[]>(this.baseUrl + 'evento/' + 'individual');
   }
 
 

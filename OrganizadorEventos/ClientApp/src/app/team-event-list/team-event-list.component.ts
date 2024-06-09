@@ -12,8 +12,7 @@ export class TeamEventListComponent {
 
   eventosDisponibles: Evento[] = [];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router)
-  {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private router: Router){
     this.getInformation().subscribe(result =>{
       this.eventosDisponibles = result;
     }, error => console.log(error))
@@ -21,7 +20,7 @@ export class TeamEventListComponent {
 
 
   getInformation(){
-    return this.http.get<any>(this.baseUrl + 'evento/' + 'grupo');
+    return this.http.get<Evento[]>(this.baseUrl + 'evento/' + 'grupo');
   }
 
   getDetallesEvento(idEvento: number){

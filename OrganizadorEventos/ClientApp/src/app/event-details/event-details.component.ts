@@ -11,11 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class EventDetailsComponent {
   
 
-  evento!: Evento;
+  evento?: Evento;
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private activatedRoute: ActivatedRoute) {
     this.getDetalleEvento().subscribe(resultado => {
       this.evento = resultado;
-      console.log(this.evento);
     }, error => console.log(error));
   }
 

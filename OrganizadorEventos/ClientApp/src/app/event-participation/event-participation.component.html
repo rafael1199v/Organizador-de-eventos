@@ -1,9 +1,9 @@
 <h1 class="text-center">Lista de asistencia</h1>
-<h3 class="text-center">{{Evento:titulo}}</h3>
+<!-- <h3 class="text-center">{{Evento.titulo}}</h3> -->
 
-<div class="text-center">
+<!-- <div class="text-center">
     <button class="formbold-btn">Guardar cambios</button>
-</div>
+</div> -->
 
 <!-- DONE: Encontrar la forma de que haga un forEach loop con todos los participantes del evento -->
 <div style="display:flex;" *ngFor="let Participante of Participantes; let i = index">
@@ -32,7 +32,7 @@
                     </span>
                 </div>
             </div>
-            {{Participante:name}}, email: {{Participante:email}}
+            <!-- {{Participante:name}}, email: {{Participante:email}} -->
         </label>
     </div>
 </div>

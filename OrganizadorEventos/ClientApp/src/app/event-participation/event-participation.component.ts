@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Usuario } from '../models/interfaces/Evento.interface';
 
 @Component({
     selector: 'app-event-participation',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./event-participation.component.css']
   })
   export class EventParticipationComponent {
-
+    Participantes: Usuario[] = []
   }
   

@@ -8,7 +8,7 @@ import { Usuario } from '../models/interfaces/Evento.interface';
 })
 export class UserComponent {
 
-  usuario!: Usuario;
+  usuario?: Usuario;
 
   constructor(){
     this.usuario = JSON.parse(localStorage.getItem("user") || '');

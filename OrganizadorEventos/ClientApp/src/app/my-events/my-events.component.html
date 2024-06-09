@@ -1,12 +1,25 @@
 
-
+<h1>Eventos en curso</h1>
 <div class="arr">
-    <button class="card" *ngFor="let evento of misEventos">
+    <button class="card" *ngFor="let evento of eventosEnCurso" (click)="participacionEvento(evento.eventoId)">
       <div class="container">
-        <h4><b>{{evento.titulo}}</b></h4>
-        <p>{{evento.lugarEvento}}</p>
-        <p class="details-text">{{ evento.descripcion}}</p>
+        <h4><b>{{evento?.titulo}}</b></h4>
+        <p>{{evento?.lugarEvento}}</p>
+        <p class="details-text">{{ evento?.descripcion}}</p>
       </div>
     </button>
 </div>
+
+<h1>Eventos Planeados</h1>
+<div class="arr">
+  <button class="card" *ngFor="let evento of eventosFuturos">
+    <div class="container">
+      <h4><b>{{evento?.titulo}}</b></h4>
+      <p>{{evento?.lugarEvento}}</p>
+      <p class="details-text">{{ evento?.descripcion }}</p>
+    </div>
+  </button>
+</div>
+
+
 

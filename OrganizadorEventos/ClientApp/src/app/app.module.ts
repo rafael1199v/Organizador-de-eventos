@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserComponent } from './user/user.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
+import { EventParticipationComponent } from './event-participation/event-participation.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MyEventsComponent } from './my-events/my-events.component';
     UserComponent,
     CreateTeamComponent,
     MyEventsComponent,
+    EventParticipationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,7 +52,8 @@ import { MyEventsComponent } from './my-events/my-events.component';
       { path: 'event-details/:id', component: EventDetailsComponent},
       { path: 'user', component: UserComponent},
       { path: 'create-team', component: CreateTeamComponent},
-      { path: 'my-events', component: MyEventsComponent}
+      { path: 'my-events', component: MyEventsComponent},
+      { path: 'event-participation/:id', component: EventParticipationComponent}
     ]),
     AppRoutingModule
   ],
