@@ -16,22 +16,22 @@ public class EventoController : ControllerBase
     }
 
 
-    [HttpGet("individual")]
+    [HttpGet("individual/{usuarioId}")]
 
-    public IActionResult getEventosIndividuales()
+    public IActionResult getEventosIndividuales(int usuarioId)
     {
 
         var eventos = new EventoService(_appDbContext);
-        return Ok(eventos.getAllEventosIndividuales());
+        return Ok(eventos.getAllEventosIndividuales(usuarioId));
 
     }
 
 
-    [HttpGet("grupo")]
-    public IActionResult getEventosGrupales()
+    [HttpGet("grupo/{usuarioId}")]
+    public IActionResult getEventosGrupales(int usuarioId)
     {
         var eventos = new EventoService(_appDbContext);
-        return Ok(eventos.getAllEventosGrupales());
+        return Ok(eventos.getAllEventosGrupales(usuarioId));
     }
 
 

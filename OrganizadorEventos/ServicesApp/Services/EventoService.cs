@@ -11,10 +11,11 @@ public class EventoService
         _appDbContext = appDbContext;
     }
 
-    public IEnumerable<Evento> getAllEventosIndividuales()
+    public IEnumerable<Evento> getAllEventosIndividuales(int usuarioId)
     {
+        DateTime fecha = DateTime.Now;
         var eventosIndividualesDb = _appDbContext.Eventos
-                                    .Where(evento => evento.PorEquipos == false)
+                                    .Where(evento => evento.PorEquipos == false && evento.Finalizacion > fecha && evento.OrganizadorId != usuarioId)
                                     .Include(evento => evento.Organizador)
                                     .ToList();
 
@@ -23,10 +24,11 @@ public class EventoService
 
 
 
-    public IEnumerable<Evento> getAllEventosGrupales()
+    public IEnumerable<Evento> getAllEventosGrupales(int usuarioId)
     {
+        DateTime fecha = DateTime.Now;
         var eventosgrupalesDb = _appDbContext.Eventos
-                                    .Where(evento => evento.PorEquipos == true)
+                                    .Where(evento => evento.PorEquipos == true && evento.Finalizacion > fecha && evento.OrganizadorId != usuarioId)
                                     .Include(evento => evento.Organizador)
                                     .ToList();
 
@@ -50,8 +52,9 @@ public class EventoService
 
     public IEnumerable<Evento> getEventosOrganizador(int id)
     {
+        DateTime fecha = DateTime.Now;
         var eventos = _appDbContext.Eventos
-                        .Where(evento => evento.OrganizadorId == id)
+                        .Where(evento => evento.OrganizadorId == id && evento.Finalizacion > fecha)
                         .ToList();
 
 

@@ -5,6 +5,9 @@ import { Evento, Usuario } from '../models/interfaces/Evento.interface';
 import { Router } from '@angular/router';
 
 
+
+
+
 @Component({
   selector: 'app-my-events',
   templateUrl: './my-events.component.html',
@@ -15,7 +18,7 @@ export class MyEventsComponent {
   misEventos: Evento[] = [];
   eventosEnCurso: Evento[] = [];
   eventosFuturos: Evento[] = [];
-  fecha: Date = new Date();;
+  fecha: Date = new Date();
   constructor(private http : HttpClient, private route: ActivatedRoute, @Inject('BASE_URL') private baseUrl: string, private router: Router){
     this.getEventos().subscribe(resultado =>{
       this.misEventos = resultado;
@@ -34,7 +37,10 @@ export class MyEventsComponent {
 
   clasificarEventos(eventos: Evento[], eventosEnCurso: Evento[], eventosFuturos: Evento[]){
     for(let i = 0; i < eventos.length; i++){
-      if(eventos[i].inicio < this.fecha){
+      eventos[i].inicio = new Date(eventos[i].inicio);
+      eventos[i].finalizacion = new Date(eventos[i].finalizacion);
+
+      if(eventos[i].inicio.getTime() > this.fecha.getTime()){
         eventosFuturos.push(eventos[i]);
       }
       else{

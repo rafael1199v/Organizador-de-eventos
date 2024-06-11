@@ -20,7 +20,7 @@ export class TeamEventListComponent {
 
 
   getInformation(){
-    return this.http.get<Evento[]>(this.baseUrl + 'evento/' + 'grupo');
+    return this.http.get<Evento[]>(this.baseUrl + 'evento/' + 'grupo/' + (JSON.parse(localStorage.getItem('user') || '-1')).usuarioId);
   }
 
   getDetallesEvento(idEvento: number){
