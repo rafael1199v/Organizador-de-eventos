@@ -6,9 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent {
-  public currentCount = 0;
+  Quantity:number = 2;
+  isTeamEvent:boolean = false;
 
-  public incrementCounter() {
-    this.currentCount++;
+  TeamClick(){
+    if(this.isTeamEvent){
+      this.isTeamEvent = false
+    }
+    else{
+      this.isTeamEvent = true
+    }
   }
+
 }
