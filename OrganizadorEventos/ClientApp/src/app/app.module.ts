@@ -20,6 +20,7 @@ import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { EventParticipationComponent } from './event-participation/event-participation.component';
 import { HistoryComponent } from './history/history.component';
+import { EventoService } from './services/eventoService';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { HistoryComponent } from './history/history.component';
     ]),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [EventoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

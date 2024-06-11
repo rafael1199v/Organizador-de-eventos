@@ -26,7 +26,27 @@ public class UsuarioService
     }
 
 
-    public IEnumerable<UsuarioEvento> getUsuariosEvento(OrganizadorEventosContext _appDbContext, int eventoId)
+
+    public List<UsuarioEvento> OrdenarUsuarios(List<UsuarioEvento> usuarios)
+    {
+        for(int i = 0; i < usuarios.Count; i++)
+        {
+            for(int j = 0; j < usuarios.Count - 1; j++)
+            {
+                if(usuarios[j].Nombre[0] > usuarios[j + 1].Nombre[0])
+                {
+                    UsuarioEvento temp = usuarios[j];
+                    usuarios[j] = usuarios[j + 1];
+                    usuarios[j + 1] = temp;
+                }
+            }
+        }
+
+        return usuarios;
+    }
+
+
+    public List<UsuarioEvento> getUsuariosEvento(OrganizadorEventosContext _appDbContext, int eventoId)
     {
         var usuarios = from usuario in _appDbContext.Usuarios
                         join participante in _appDbContext.ParticipanteEventos on usuario.UsuarioId equals participante.ParticipanteId
@@ -39,6 +59,9 @@ public class UsuarioService
                             Asistencia = participante.Asistencia
                         };
 
-        return usuarios.ToList();
+
+        List<UsuarioEvento> usuariosEvento = new List<UsuarioEvento>(usuarios.ToList());
+
+        return this.OrdenarUsuarios(usuariosEvento);
     }
 }

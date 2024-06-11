@@ -12,83 +12,43 @@
         <div style="display:flex; justify-content: center;">
             <h3 style="margin-left:10px; margin-right:10px">Eventos Realizados</h3>
             <label class="switch">
-                <input type="checkbox" [(ngModel)]="assisted">
+                <input type="checkbox" [(ngModel)]="participante">
                 <span class="slider"></span>
               </label>
             <h3 style="margin-left:10px; margin-right:10px">Eventos asistidos</h3>
         </div>
 
         <!-- Eventos en los que asististe -->
-        <div *ngIf="assisted; else elseBlock">
+        <div *ngIf="participante; else elseBlock">
             <div class="event-list">
-
-                <div class="event">
+                <div class="event" *ngFor="let evento of eventosParticipante">
                     <div class="event-date">
-                        <span>04</span>
-                        <span>Jun</span>
-                        <span>2024</span>
+                        <span>{{ evento?.inicio?.getDate() }}</span>
+                        <span>{{ evento?.inicio?.toLocaleString('en-us', {month: 'long'}) }}</span>
+                        <span>{{ evento?.inicio?.getFullYear() }}</span>
                     </div>
                     <div class="event-details">
-                        <h2>IoI Bolivia</h2>
-                        <p>Competencia de programacion en el cual vas a demostrar tus habilidades en programación, teoría de numeros y conocimiento en estructura de datos</p>
+                        <h2>{{ evento?.titulo }}</h2>
+                        <p>{{ evento?.descripcion }}</p>
                     </div>
                 </div>
-                
             </div>
         </div>
 
         <!-- Todos los eventos (por qué rayos me lo marca como TODO??????????) -->
         <ng-template #elseBlock>
             <div class="event-list">
-
-                <div class="event">
+                <div class="event" *ngFor="let evento of eventosOrganizador">
                     <div class="event-date">
-                        <span>04</span>
-                        <span>Jun</span>
-                        <span>2024</span>
+                        <span>{{ evento?.inicio?.getDate() }}</span>
+                        <span>{{ evento?.inicio?.toLocaleString('en-us', {month: 'long'}) }}</span>
+                        <span>{{ evento?.inicio?.getFullYear() }}</span>
                     </div>
                     <div class="event-details">
-                        <h2>IoI Bolivia</h2>
-                        <p>Competencia de programacion en el cual vas a demostrar tus habilidades en programación, teoría de numeros y conocimiento en estructura de datos</p>
+                        <h2>{{ evento?.titulo }}</h2>
+                        <p>{{ evento?.descripcion }}</p>
                     </div>
                 </div>
-
-                <div class="event">
-                    <div class="event-date">
-                        <span>20</span>
-                        <span>May</span>
-                        <span>2024</span>
-                    </div>
-                    <div class="event-details">
-                        <h2>Reunion Amigos</h2>
-                        <p>Evento random donde uno puede hacer lo que quiera</p>
-                    </div>
-                </div>
-
-                <div class="event">
-                    <div class="event-date">
-                        <span>20</span>
-                        <span>May</span>
-                        <span>2024</span>
-                    </div>
-                    <div class="event-details">
-                        <h2>Charla Ucb</h2>
-                        <p>Competencia de programacion en el cual vas a demostrar tus habilidades en programación, teoría de numeros y conocimiento en estructura de datos</p>
-                    </div>
-                </div>
-
-                <div class="event">
-                    <div class="event-date">
-                        <span>20</span>
-                        <span>May</span>
-                        <span>2024</span>
-                    </div>
-                    <div class="event-details">
-                        <h2>Partido Futbol</h2>
-                        <p>Segundo Evento random donde uno puede hacer lo que quiera</p>
-                    </div>
-                </div>
-
             </div>
         </ng-template>
     </div>

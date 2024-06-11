@@ -50,5 +50,21 @@ public class EventoController : ControllerBase
         var eventosService = new EventoService(_appDbContext);
         return Ok(eventosService.getEventosOrganizador(id));
     }
+
+
+    [HttpGet("organizador/{id}")]
+    public IActionResult getHistorialEventosOrganizador(int id)
+    {
+        var eventoService = new EventoService(_appDbContext);
+        return Ok(eventoService.getHistorialEventoOrganizador(id));
+    }
+
+
+    [HttpGet("participante/{id}")]
+    public IActionResult getHistorialEventoParticipante(int id)
+    {
+        var eventoService = new EventoService(_appDbContext);
+        return Ok(eventoService.getHistorialEventoPartipante(id));
+    }
     
 }

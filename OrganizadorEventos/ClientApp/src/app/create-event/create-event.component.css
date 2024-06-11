@@ -151,6 +151,7 @@ body {
     border: 1px solid #dde3ec;
     border-radius: 5px;
     color: #536387;
+    width: 100%;
 }
 .number-box{
     height: 25px;

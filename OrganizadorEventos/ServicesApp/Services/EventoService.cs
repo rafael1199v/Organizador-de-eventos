@@ -63,4 +63,29 @@ public class EventoService
     }
 
 
+    public IEnumerable<Evento> getHistorialEventoPartipante(int usuarioId)
+    {
+        DateTime fecha = DateTime.Now;
+
+        var eventos = from evento in _appDbContext.Eventos
+                        join participanteEvento in _appDbContext.ParticipanteEventos on evento.EventoId equals participanteEvento.EventoId
+                        where participanteEvento.ParticipanteId == usuarioId && evento.Finalizacion <= fecha && participanteEvento.Asistencia == true
+                        select evento;
+        
+        return eventos.ToList();
+    }
+
+    public IEnumerable<Evento> getHistorialEventoOrganizador(int usuarioId)
+    {
+        DateTime fecha = DateTime.Now;
+
+        var eventos = from evento in _appDbContext.Eventos
+                        where evento.OrganizadorId == usuarioId && evento.Finalizacion <= fecha
+                        select evento;
+
+
+        return eventos.ToList();
+    }
+
+
 }

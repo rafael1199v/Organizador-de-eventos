@@ -6,12 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent {
-  Quantity:number = 2;
+  Quantity:number = 1;
   isTeamEvent:boolean = false;
 
   TeamClick(){
     if(this.isTeamEvent){
       this.isTeamEvent = false
+      this.Quantity = 1;
     }
     else{
       this.isTeamEvent = true

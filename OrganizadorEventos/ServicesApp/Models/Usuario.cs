@@ -41,7 +41,7 @@ public class UsuarioLogin{
 
 public class UsuarioEvento{
     public int UsuarioId {get; set;}
-    public string? Nombre {get; set;}
+    public string Nombre {get; set;} = null!;
     public string? Correo {get; set;}
     public string? Organizacion {get; set;}
     public bool Asistencia {get; set;}

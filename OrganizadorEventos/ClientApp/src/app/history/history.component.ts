@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Evento } from '../models/interfaces/Evento.interface';
+import { EventoService } from '../services/eventoService';
+
 
 @Component({
   selector: 'app-history',
@@ -6,5 +10,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent {
-  assisted:boolean = false
+
+  eventosParticipante: Evento[] = [];
+  eventosOrganizador: Evento[] = [];
+  participante: boolean = false;
+  
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private eventoService: EventoService){
+    this.getEventosOrganizador().subscribe(resultado => {
+      this.eventosOrganizador = this.eventoService.actualizarFormatoTiempo(resultado);
+      console.log(this.eventosOrganizador);
+    }, error => console.log(error))
+
+    
+    this.getEventosParticipante().subscribe(resultado => {
+      this.eventosParticipante = this.eventoService.actualizarFormatoTiempo(resultado);
+      console.log(this.eventosParticipante);
+    }, error => console.log(error))
+  }
+
+
+
+  getEventosParticipante() {
+    return this.http.get<Evento[]>(this.baseUrl + 'evento/participante/' + (JSON.parse(localStorage.getItem('user') || '-1')).usuarioId);
+  }
+
+
+  getEventosOrganizador() {
+    return this.http.get<Evento[]>(this.baseUrl + 'evento/organizador/' + (JSON.parse(localStorage.getItem('user') || '-1')).usuarioId);
+  }
+
+
+
 }
