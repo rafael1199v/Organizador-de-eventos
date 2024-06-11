@@ -55,7 +55,8 @@ import { HistoryUserComponent } from './history-user/history-user.component';
       { path: 'user', component: UserComponent},
       { path: 'create-team', component: CreateTeamComponent},
       { path: 'my-events', component: MyEventsComponent},
-      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent}
+      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent},
+      { path: 'history-user', component: HistoryUserComponent}
     ]),
     AppRoutingModule
   ],
