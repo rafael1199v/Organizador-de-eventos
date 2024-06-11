@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "OrganizadorEventos"
+  "defaultProject": "OrganizadorEventos",
+  "cli": {
+    "analytics": "eade50b1-72cf-473f-a680-b04ef2d93c12"
+  }
 }

@@ -2,8 +2,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <!-- Incluye Font Awesome desde el CDN -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
 <div class="container">
@@ -17,6 +19,18 @@
 		 </div>
         <input name="" class="form-control" placeholder="Nombre Completo" type="name">
     </div>
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"> <i class="fa fa-map-marker-alt"></i> </span>
+		</div>
+		<input name="" class="form-control" placeholder="Direccion" type="text">
+	</div>	
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"> <i class="fa fa-calendar-alt"></i> </span>
+		</div>
+		<input name="birthdate" class="form-control" placeholder="Fecha de Nacimiento" type="date">
+	</div>	
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
@@ -35,15 +49,17 @@
 		</select>
     	<input name="" class="form-control" placeholder="Teléfono/Celular" type="text">
     </div>
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
-		<select class="form-control">
-			<option selected="">--Profesion--</option>
-			<option>Docente</option>
-			<option>Estudiante</option>
-		</select>
+		<input name="organization" class="form-control" placeholder="Organización" type="text">
+	</div>
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+		</div>
+		<input name="cargo" class="form-control" placeholder="Cargo" type="text">
 	</div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
