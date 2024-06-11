@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../models/interfaces/Evento.interface';
+import { Usuario } from '../models/interfaces/Usuario.interface';
 
 @Component({
   selector: 'app-home',

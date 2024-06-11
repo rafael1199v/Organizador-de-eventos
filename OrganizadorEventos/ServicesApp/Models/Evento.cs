@@ -19,6 +19,8 @@ public partial class Evento
 
     public bool PorEquipos { get; set; }
 
+    public int MaxPersonasPorEquipo { get; set; }
+
     public int OrganizadorId { get; set; }
 
     public virtual ICollection<EquiposEvento> EquiposEventos { get; } = new List<EquiposEvento>();

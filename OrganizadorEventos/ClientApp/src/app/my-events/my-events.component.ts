@@ -1,7 +1,8 @@
 import { Component, Inject} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Evento, Usuario } from '../models/interfaces/Evento.interface';
+import { Evento} from '../models/interfaces/Evento.interface';
+import { Usuario } from '../models/interfaces/Usuario.interface';
 import { Router } from '@angular/router';
 
 

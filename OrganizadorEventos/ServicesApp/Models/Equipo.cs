@@ -9,6 +9,8 @@ public partial class Equipo
 
     public string Nombre { get; set; } = null!;
 
+    public int NumeroIntegrantes { get; set; }
+
     public int RepresentanteId { get; set; }
 
     public virtual ICollection<EquiposEvento> EquiposEventos { get; } = new List<EquiposEvento>();
