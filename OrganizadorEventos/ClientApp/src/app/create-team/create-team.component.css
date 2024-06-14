@@ -36,7 +36,7 @@
     margin: 0 auto;
     max-width: 550px;
     width: 100%;
-    background: rgb(201, 200, 210);
+    background: #F8F9FA;
     border-radius: 5px;
     border-color: black;
     border-width: 5px;
@@ -48,6 +48,7 @@
     align-items: center;
     justify-content: center;
     padding: 48px;
+    background: transparent;
 }
 
 .number-box{
