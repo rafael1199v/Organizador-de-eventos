@@ -54,7 +54,7 @@ import { EventoService } from './services/eventoService';
       { path: 'create-event', component: CreateEventComponent},
       { path: 'event-details/:id', component: EventDetailsComponent},
       { path: 'user', component: UserComponent},
-      { path: 'create-team', component: CreateTeamComponent},
+      { path: 'create-team/:limit', component: CreateTeamComponent},
       { path: 'my-events', component: MyEventsComponent},
       { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent},
       { path: 'history', component: HistoryComponent}
