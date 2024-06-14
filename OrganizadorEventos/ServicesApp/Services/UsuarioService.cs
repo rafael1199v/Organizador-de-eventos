@@ -51,6 +51,7 @@ public class UsuarioService
         var usuarios = from usuario in _appDbContext.Usuarios
                         join participante in _appDbContext.ParticipanteEventos on usuario.UsuarioId equals participante.ParticipanteId
                         where participante.EventoId == eventoId
+                        orderby usuario.Nombre
                         select new UsuarioEvento{
                             UsuarioId = usuario.UsuarioId,
                             Nombre = usuario.Nombre,
@@ -60,8 +61,26 @@ public class UsuarioService
                         };
 
 
-        List<UsuarioEvento> usuariosEvento = new List<UsuarioEvento>(usuarios.ToList());
+      
 
-        return this.OrdenarUsuarios(usuariosEvento);
+        return usuarios.ToList();
+    }
+
+
+
+    public bool emailExistencia(OrganizadorEventosContext _appDbContext,string correo)
+    {
+        var Usuario = (from usuario in _appDbContext.Usuarios
+                        where usuario.Correo == correo
+                        select usuario).FirstOrDefault();
+
+
+        if(Usuario == null)
+        {
+            return false;
+        }
+
+
+        return true;
     }
 }

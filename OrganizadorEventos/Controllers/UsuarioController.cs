@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Microsoft.VisualBasic;
 using OrganizadorEventos.ServicesApp.Models;
 
 [ApiController]
@@ -36,6 +37,23 @@ public class UsuarioController: ControllerBase
         var usuarioService = new UsuarioService();
 
         return Ok(usuarioService.getUsuariosEvento(_appDbContext ,id)); 
+    }
+
+    
+    [HttpPost("registro")]
+    public IActionResult validarUsuario([FromBody] Usuario usuario)
+    {
+        var usuarioService = new UsuarioService();
+
+        if(usuarioService.emailExistencia(_appDbContext, usuario.Correo))
+        {
+            return BadRequest(new {Mensaje = "El correo ya esta en uso"});
+        }
+
+        _appDbContext.Usuarios.Add(usuario);
+        _appDbContext.SaveChanges();
+        
+        return Ok(new {Mensaje = "Registrado Exitosamente"});
     }
 
 

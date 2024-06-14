@@ -12,70 +12,72 @@
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h2 class="card-title mt-3 text-center">Crear Cuenta</h2>
-	<form>
+	<form [formGroup]="registerForm">
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Nombre Completo" type="name">
+        <input name="" class="form-control" placeholder="Nombre Completo" type="name" formControlName="nombre">
     </div>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-map-marker-alt"></i> </span>
 		</div>
-		<input name="" class="form-control" placeholder="Direccion" type="text">
+		<input name="" class="form-control" placeholder="Direccion" type="text" formControlName="direccion">
 	</div>	
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-calendar-alt"></i> </span>
 		</div>
-		<input name="birthdate" class="form-control" placeholder="Fecha de Nacimiento" type="date">
+		<input name="birthdate" class="form-control" placeholder="Fecha de Nacimiento" type="date" formControlName="fechaNacimiento">
 	</div>	
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Dirección E-mail" type="email">
+        <input name="" class="form-control" placeholder="Dirección E-mail" type="email" formControlName="correo">
     </div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-		<select class="custom-select" style="max-width: 120px;">
+		<select class="custom-select" style="max-width: 120px;" formControlName="prefijo">
 		    <option selected="">+591</option>
 		    <option value="1">+972</option>
 		    <option value="2">+198</option>
 		    <option value="3">+701</option>
 		</select>
-    	<input name="" class="form-control" placeholder="Teléfono/Celular" type="text">
+    	<input name="" class="form-control" placeholder="Teléfono/Celular" type="text" formControlName="telefono">
     </div>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
-		<input name="organization" class="form-control" placeholder="Organización" type="text">
+		<input name="organization" class="form-control" placeholder="Organización" type="text" formControlName="organizacion">
 	</div>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
-		<input name="cargo" class="form-control" placeholder="Cargo" type="text">
+		<input name="cargo" class="form-control" placeholder="Cargo" type="text" formControlName="cargo">
 	</div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="Contraseña" type="password">
+        <input class="form-control" placeholder="Contraseña" type="password" formControlName="contrasenha">
     </div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="Repetir Contraseña" type="password">
+        <input class="form-control" placeholder="Repetir Contraseña" type="password" formControlName="contrasenhaRep">
     </div>                                    
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Crear Cuenta  </button>
+        <button type="submit" class="btn btn-primary btn-block" (click)="registrarUsuario()"> Crear Cuenta  </button>
     </div>    
     <p class="text-center">Tienes una Cuenta? <a routerLink="/login" routerLinkActive="active">Inicia sesión.</a> </p>                                                                 
 </form>
 </article>
+
+
