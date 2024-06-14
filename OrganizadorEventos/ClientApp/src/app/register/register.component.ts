@@ -49,7 +49,7 @@ export class RegisterComponent {
     else{
       this.usuarioService.registrarUsuario(this.registerForm).subscribe( resultado =>{
         alert("Usuario Registrado")
-        this.registerForm.reset;
+        this.registerForm.reset();
       }, error => console.log(error));
     }
   }
