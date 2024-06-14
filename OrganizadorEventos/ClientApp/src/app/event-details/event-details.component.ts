@@ -35,7 +35,7 @@ export class EventDetailsComponent {
 
   inscripcion(){
     if(this.evento?.porEquipos){
-      this.route.navigate(['/create-team', this.evento.maxPersonasPorEquipo])
+      this.route.navigate(['/create-team',this.evento.eventoId ,this.evento.maxPersonasPorEquipo])
     }
     else{
       this.inscripcionIndividual().subscribe();
