@@ -20,7 +20,7 @@ import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { EventParticipationComponent } from './event-participation/event-participation.component';
 import { HistoryComponent } from './history/history.component';
-import { EventoService } from './services/eventoService';
+import { EventoService } from './services/EventoService';
 import { UsuarioService } from './services/UsuarioService';
 
 

@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Evento } from '../models/interfaces/Evento.interface';
-import { EventoService } from '../services/eventoService';
-
+import { EventoService } from '../services/EventoService';
 
 @Component({
   selector: 'app-history',

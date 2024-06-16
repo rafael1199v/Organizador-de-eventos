@@ -23,6 +23,10 @@ body {
     opacity: 1;
 }
 
+#count{
+    font-size: 13px;
+}
+
 .formbold-main-wrapper {
     display: flex;
     align-items: center;

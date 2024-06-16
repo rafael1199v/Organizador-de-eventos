@@ -4,7 +4,7 @@
     <div class="formbold-form-wrapper">
 
   
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <form action="https://formbold.com/s/FORM_ID" method="POST" [formGroup]="eventoForm">
         <div class="formbold-form-title">
           <h2 class="">Formulario de eventos</h2>
           <p>
@@ -21,6 +21,7 @@
               name="name"
               id="name"
               class="formbold-form-input"
+              formControlName="titulo"
             />
           </div>
 
@@ -33,6 +34,7 @@
             name="location"
             id="location"
             class="formbold-form-input"
+            formControlName="lugarEvento"
         />
         </div>
   
@@ -41,13 +43,13 @@
             <label for="dateStart" class="formbold-form-label">
               Fecha y hora de inicio
             </label>
-            <input type="datetime-local" id="dateStart" name="dateStart" class="datetime-get">
+            <input type="datetime-local" id="dateStart" name="dateStart" class="datetime-get" formControlName="inicio">
           </div>
           <div>
             <label for="dateEnd" class="formbold-form-label">
                 Fecha y hora de finalizacion
             </label>
-            <input type="datetime-local" id="dateEnd" name="dateEnd" class="datetime-get">
+            <input type="datetime-local" id="dateEnd" name="dateEnd" class="datetime-get" formControlName="finalizacion">
           </div>
         </div>
 
@@ -60,9 +62,12 @@
                 name="details"
                 id="details"
                 class="formbold-form-textarea-big"
-                style="height:200px"
+                style="height:120px"
                 autocomplete="off"
+                maxlength="300"
+                formControlName="descripcion"
             ></textarea>
+            
             </div>
   
         <div class="formbold-checkbox-wrapper">
@@ -72,10 +77,10 @@
           </label>
         </div>
 
-        <div *ngIf="isTeamEvent">
+        <div *ngIf="esEventoGrupo">
           <div style="display: flex; margin-top: 20px;">
             <p style="color: #536387;">Número de integrantes:</p>
-            <input type="number" class="number-box" [(ngModel)]="Quantity" min="1" max="4" [ngModelOptions]="{standalone: true}">
+            <input type="number" class="number-box" [(ngModel)]="cantidadPersonas" min="1" max="4" [ngModelOptions]="{standalone: true}">
           </div>
         </div>
 
@@ -83,7 +88,7 @@
 
 
         <div class="text-center">
-          <button class="formbold-btn">Crear evento</button>
+          <button class="formbold-btn" (click)="crearEvento()">Crear evento</button>
         </div>
       </form>
     </div>

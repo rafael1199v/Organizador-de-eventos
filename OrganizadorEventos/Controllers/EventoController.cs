@@ -66,5 +66,26 @@ public class EventoController : ControllerBase
         var eventoService = new EventoService(_appDbContext);
         return Ok(eventoService.getHistorialEventoPartipante(id));
     }
+
+    [HttpPost("crearEvento")]
+    public IActionResult crearEventos([FromBody] Evento evento)
+    {
+
+        var even = new Evento{
+            Titulo = evento.Titulo,
+            Descripcion = evento.Descripcion,
+            Inicio = evento.Inicio,
+            Finalizacion = evento.Finalizacion,
+            LugarEvento = evento.LugarEvento,
+            PorEquipos = evento.PorEquipos,
+            MaxPersonasPorEquipo = evento.MaxPersonasPorEquipo,
+            OrganizadorId = evento.OrganizadorId,
+        };
+        
+       _appDbContext.Eventos.Add(even);
+       _appDbContext.SaveChanges();
+
+        return Ok();
+    }
     
 }
