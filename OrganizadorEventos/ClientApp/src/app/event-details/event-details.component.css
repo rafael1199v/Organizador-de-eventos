@@ -30,4 +30,9 @@
 .participation-btn:hover {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
     background-color: #5e57dd;
+    text-shadow: 0px 0px 8px white;
+}
+
+h1, p{
+    color: #07074d;
 }

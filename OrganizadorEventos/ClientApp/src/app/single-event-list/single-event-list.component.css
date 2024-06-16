@@ -31,3 +31,7 @@ padding: 8px 8px;
     -webkit-box-orient: vertical;
     display: -webkit-box;
 }
+
+b, h1{
+    color: #07074d;
+}
