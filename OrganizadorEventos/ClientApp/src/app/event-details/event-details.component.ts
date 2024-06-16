@@ -41,4 +41,12 @@ export class EventDetailsComponent {
       this.inscripcionIndividual().subscribe();
     }
   }
+  textoInscripcion(){
+    if(this.evento?.porEquipos){
+      return "Crear un equipo!"
+    }
+    else{
+      return "Participar!"
+    }
+  }
 }

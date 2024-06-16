@@ -35,7 +35,7 @@ h1 {
     text-align: center;
     font-size: 1.2em;
     color: #fff;
-    background-color: #007bff;
+    background-color: #6a64f1;
     border-radius: 8px;
     padding: 10px 0;
     margin-right: 20px;
@@ -51,7 +51,7 @@ h1 {
 
 .event-details h2 {
     margin: 0 0 10px;
-    color: #007bff;
+    color: #07074d;
 }
 
 .event-details p {
@@ -80,7 +80,7 @@ h1 {
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background: #0974f1;
+    background-color: #6a64f1;
     border-radius: 50px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
@@ -101,11 +101,11 @@ h1 {
   }
   
   .switch input:checked + .slider {
-    background: #0974f1;
+    background-color: #6a64f1;
   }
   
   .switch input:focus + .slider {
-    box-shadow: 0 0 1px #0974f1;
+    background-color: #6a64f1;
   }
   
   .switch input:checked + .slider:before {

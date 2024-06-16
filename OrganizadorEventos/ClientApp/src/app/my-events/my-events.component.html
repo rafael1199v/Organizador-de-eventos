@@ -1,5 +1,5 @@
 
-<h1>Eventos en curso</h1>
+<h1 class="text-center">Eventos en curso</h1>
 <div class="arr">
     <button class="card" *ngFor="let evento of eventosEnCurso" (click)="participacionEvento(evento.eventoId, evento.porEquipos)">
       <div class="container">
@@ -10,7 +10,7 @@
     </button>
 </div>
 
-<h1>Eventos Planeados</h1>
+<h1 class="text-center">Eventos Planeados</h1>
 <div class="arr">
   <button class="card" *ngFor="let evento of eventosFuturos">
     <div class="container">

@@ -1,33 +1,23 @@
-<h1>Organizador de eventos</h1>
-<p>Esta página fue hecha para crear, administrar y visualizar eventos en Santa Cruz.</p>
-<h4>Características de la página:</h4>
-<summary>
-    <strong>Eventos individuales:</strong>
-    Puedes ver y crear eventos que no requieran dos o más personas a la vez para participar.
-</summary>
-<summary>
-    <strong>Eventos en equipo:</strong>
-    Si tienes una banda o grupo, puedes buscar eventos específicamente para grupos de amigos.
-</summary>
-<summary>
-    <strong>Equipos:</strong>
-    Antes de ir a un evento de equipo, debes crear el tuyo propio, puedes hacerlo desde la pestaña X. (No implementado)
-</summary>
-<summary>
-    <strong>Certificados de participación:</strong>
-    Cuando participes en un evento, el organizador marcará tu asistencia, otorgándote un certificado de participación. (No implementado)
-</summary>
+<div class="container">
+    <h1 class="text-center" style="margin-top: -25px;">Organizador de eventos</h1>
+    <p class="text-center">Crea, administra, mira y participa en eventos de toda Santa Cruz, todo desde una sola app.</p>
+    <h4 class="text-center" style="margin-top: 50px; margin-bottom: 20px;">Características de la página:</h4>
+    <summary>
+        <strong>Eventos individuales y en equipo:</strong>
+        Puedes elegir si participar en eventos hechos para participación individual, o hacerte un grupo y entrar a eventos dedicados a equipos.
+    </summary>
+    <summary>
+        <strong>Organización y participación libre:</strong>
+        No necesitas nada para crear eventos o registrarte en uno, asegúrate de cumplir a tu palabra.
+    </summary>
+    <summary>
+        <strong>Certificados de participación:</strong>
+        Cuando participes en un evento, el organizador marcará tu asistencia, otorgándote un certificado de participación. (No implementado)
+    </summary>
 
-<strong>IDs:</strong>
-<summary>name: Nombre de un evento</summary>
-<summary>location: Ubicacion</summary>
-<summary>dateStart: Fecha y hora de inicio de un evento</summary>
-<summary>dateEnd: Fecha y hora de finalizacion de un evento</summary>
-<summary>details: Detalles de un evento</summary>
-<summary>isTeamEvent: bool que define si es o no un evento de equipos</summary>
-
-
-
-<a [routerLinkActive]="['link-active']" [routerLink]="['/login']">
-    <button class="logout-btn">Cerrar sesión</button>
-</a>
+</div>
+<div class="text-center">
+    <a [routerLinkActive]="['link-active']" [routerLink]="['/login']">
+        <button class="logout-btn">Cerrar sesión</button>
+    </a>
+</div>
