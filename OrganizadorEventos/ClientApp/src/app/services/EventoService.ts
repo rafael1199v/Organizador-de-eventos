@@ -48,4 +48,26 @@ export class EventoService{
         return this.http.post<Evento>(this.baseUrl + 'evento/crearEvento', evento)
 
    }
+
+
+   inscripcionIndividual(eventoID: number, participanteID: number){
+        const participante = {
+            participanteId: participanteID,
+            eventoId: eventoID,
+            asistencia: false
+        }
+
+        return this.http.post<any>(this.baseUrl + 'evento/registro/participante', participante);
+    }
+
+
+    verificarRegistro(eventoID: number, participanteID: number){
+        const participante = {
+            participanteId: participanteID,
+            eventoId: eventoID,
+            asistencia: false
+        }
+        console.log(participante)
+        return this.http.post<any>(this.baseUrl + 'evento/verificar/registro', participante);
+    }
 }

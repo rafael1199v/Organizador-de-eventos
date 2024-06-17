@@ -82,8 +82,27 @@ public class EventoController : ControllerBase
             OrganizadorId = evento.OrganizadorId,
         };
         
-        this._eventoService.crearEvento(evento);
+        this._eventoService.crearEvento(even);
         return Ok();
+    }
+
+
+    [HttpPost("registro/participante")]
+    public IActionResult registroPartipante([FromBody] UsuarioRegistroEvento usuario)
+    {
+        this._eventoService.registrarParticipante(usuario);
+        return Ok();
+    }
+
+    [HttpPost("verificar/registro")]
+    public IActionResult verificarRegistroParticipante([FromBody] UsuarioRegistroEvento usuario)
+    {
+        if(this._eventoService.ParticipanteRegistrado(usuario.ParticipanteId, usuario.EventoId)){
+            return Ok(true);
+        }
+        else{
+            return Ok(false);
+        }
     }
     
 }

@@ -35,10 +35,7 @@ public class EquipoController : ControllerBase
             return BadRequest(new {Message = "El evento ya existe"});   
         }
 
-        System.Console.WriteLine(equipoDatos.Nombre);
-        System.Console.WriteLine(equipoDatos.Organizacion);
-        System.Console.WriteLine(equipoDatos.RepresentanteId);
-        System.Console.WriteLine(equipoDatos.EventoId);
+        
 
 
         return Ok();

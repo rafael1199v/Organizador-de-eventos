@@ -9,6 +9,8 @@
     {{evento?.lugarEvento}}
 </p>
 
+<p *ngIf="inscrito" style="text-align: center;"> Ya estas registrado en este evento </p>
+
 <div class="double-col">
     <div class="card">
         <strong class="text-center">Hora inicio:</strong>
@@ -21,6 +23,6 @@
 </div>
 
 <div class="text-center">
-    <button style="font-size: xx-large;" class="participation-btn" (click)="inscripcion()">{{textoInscripcion()}}</button>
+    <button style="font-size: xx-large;" class="participation-btn" (click)="inscripcion()" [disabled]="evento == undefined || inscrito">{{textoInscripcion()}}</button>
 </div>
 

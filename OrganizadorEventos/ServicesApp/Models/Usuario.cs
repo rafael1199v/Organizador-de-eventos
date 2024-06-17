@@ -48,3 +48,12 @@ public class UsuarioEvento{
     public bool Asistencia {get; set;}
 
 }
+
+
+public class UsuarioRegistroEvento{
+    public int ParticipanteId {get; set;}
+    public int EventoId {get; set;}
+    public bool Asistencia {get; set;}
+}
+
+

@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { Evento } from '../models/interfaces/Evento.interface';
 import { HttpClient } from '@angular/common/http';
-import { Usuario } from '../models/interfaces/Usuario.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventoService } from '../services/EventoService';
+
 
 
 @Component({
@@ -14,10 +15,16 @@ export class EventDetailsComponent {
   
 
   evento?: Evento;
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private activatedRoute: ActivatedRoute, private route: Router) {
+  inscrito: boolean = true;
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private activatedRoute: ActivatedRoute, private route: Router, private eventoService: EventoService) {
     this.getDetalleEvento().subscribe(resultado => {
       this.evento = resultado;
     }, error => console.log(error));
+
+    this.eventoService.verificarRegistro(parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '-1'),parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId)).subscribe(resultado => {
+      this.inscrito = resultado;
+      console.log(this.inscrito)
+    }, error => console.log(error))
   }
 
 
@@ -29,7 +36,8 @@ export class EventDetailsComponent {
 
 
   inscripcionIndividual(){
-    return this.http.post<Usuario>(this.baseUrl + 'endpoint', (JSON.parse(localStorage.getItem('user') || '-1').usuarioId));
+    const eventoId : number = (this.evento?.eventoId ||  -1);
+    return this.eventoService.inscripcionIndividual(eventoId, parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId))
   }
 
 
@@ -38,9 +46,10 @@ export class EventDetailsComponent {
       this.route.navigate(['/create-team',this.evento.eventoId ,this.evento.maxPersonasPorEquipo])
     }
     else{
-      this.inscripcionIndividual().subscribe();
+      this.inscripcionIndividual().subscribe(resultado => {this.inscrito = true}, error => console.log(error));
     }
   }
+
   textoInscripcion(){
     if(this.evento?.porEquipos){
       return "Crear un equipo!"

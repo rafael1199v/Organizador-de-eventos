@@ -126,8 +126,35 @@ public class EventoService
 
 
     public void crearEvento(Evento evento){
-        _appDbContext.Add(evento);
+        _appDbContext.Eventos.Add(evento);
         _appDbContext.SaveChanges();
+    }
+
+    public void registrarParticipante(UsuarioRegistroEvento usuario){
+
+        var Usuario = new ParticipanteEvento{
+            ParticipanteId = usuario.ParticipanteId,
+            EventoId = usuario.EventoId,
+            Asistencia = usuario.Asistencia
+        };
+
+        //TODO: Mandar Comprobante por gmail
+    
+        _appDbContext.ParticipanteEventos.Add(Usuario);
+        _appDbContext.SaveChanges();
+
+    }
+
+
+    public bool ParticipanteRegistrado(int usuarioId, int eventoId)
+    {
+        var participante = (from participantes in _appDbContext.ParticipanteEventos
+                        where participantes.ParticipanteId == usuarioId && participantes.EventoId == eventoId
+                        select participantes).FirstOrDefault();
+
+        if(participante == null) return false;
+        else return true;
+
     }
 
 
