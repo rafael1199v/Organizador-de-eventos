@@ -15,7 +15,7 @@ export class EquipoService{
     }
 
 
-    registrarEquipo(teamForm: FormGroup, eventoID: number, representanteID: number){
+    registrarEquipo(teamForm: FormGroup, eventoID: number, representanteID: number, correoRepresentante: string){
         console.log(teamForm)
         const equipoInformacion = new Array<{correo: string, nombre: string}>();
         
@@ -29,7 +29,8 @@ export class EquipoService{
             organizacion: teamForm.value.nombreOrganizacion,
             datos: equipoInformacion,
             eventoId: eventoID,
-            representanteId: representanteID
+            representanteId: representanteID,
+            RepresentanteCorreo: correoRepresentante
         }
 
         return this.http.post<any>(this.baseUrl + 'equipo/registro', equipo);

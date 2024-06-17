@@ -30,4 +30,5 @@ export class UsuarioService{
 
         return this.http.post<Usuario>(this.baseUrl + 'usuario/registro', usuario)
     }
+
 }

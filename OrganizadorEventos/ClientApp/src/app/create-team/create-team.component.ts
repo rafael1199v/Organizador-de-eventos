@@ -1,9 +1,10 @@
 import { Component, ComponentFactoryResolver, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Evento } from '../models/interfaces/Evento.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EquipoService } from '../services/EquipoService';
+
 
 @Component({
   selector: 'create-team',
@@ -16,7 +17,7 @@ export class CreateTeamComponent {
   evento?: Evento;
   teamForm!: FormGroup;
 
-  constructor(private activatedRoute: ActivatedRoute, private http:HttpClient, @Inject('BASE_URL') private baseUrl: string, private formBuilder: FormBuilder, private equipoService: EquipoService)
+  constructor(private activatedRoute: ActivatedRoute, private http:HttpClient, @Inject('BASE_URL') private baseUrl: string, private formBuilder: FormBuilder, private equipoService: EquipoService, private router: Router)
   {
     this.Quantity = parseInt(activatedRoute.snapshot.paramMap.get('limit') || '0');
     this.getDetalleEvento().subscribe(resultado => {
@@ -88,8 +89,10 @@ export class CreateTeamComponent {
     else{
 
       let eventoId: number = parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '-1');
-      let representanteId: number = parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId)
-      this.equipoService.registrarEquipo(this.teamForm, eventoId, representanteId).subscribe();
+      let representanteId: number = parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId);
+      let correoRepresentante: string = (JSON.parse(localStorage.getItem('user') || '-1')).correo;
+      this.equipoService.registrarEquipo(this.teamForm, eventoId, representanteId, correoRepresentante).subscribe(resultado => {alert("Equipo Registrado Con exito")}, error => alert("Hubo un error al registrarse"));
+      this.router.navigate(['/home'])
     } 
   }
 }

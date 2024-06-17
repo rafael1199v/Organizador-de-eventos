@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { EventoService } from '../services/EventoService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
@@ -15,7 +16,7 @@ export class CreateEventComponent {
   eventoForm!: FormGroup;
 
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private eventoService: EventoService){}
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private eventoService: EventoService, private router: Router){}
 
   
   ngOnInit(): void{
@@ -49,9 +50,12 @@ export class CreateEventComponent {
       alert('La fecha ya pasó')
     }
     else{
-      this.eventoService.crearEvento(this.eventoForm, this.esEventoGrupo, this.cantidadPersonas, JSON.parse(localStorage.getItem('user') || '{}')).subscribe( result =>
-        {}, error => console.log(error)
+      this.eventoService.crearEvento(this.eventoForm, this.esEventoGrupo, this.cantidadPersonas, JSON.parse(localStorage.getItem('user') || '{}')).subscribe( result =>{
+        alert("Evento Creado Correctamente");
+        }, error => alert(error)
       );
+
+      this.router.navigate(['/home']);
     }
   }
 

@@ -104,5 +104,57 @@ public class EventoController : ControllerBase
             return Ok(false);
         }
     }
+
+    [HttpPut("lista/participacion/{eventoId}")]
+    public IActionResult updateListaParticipacion(int eventoId, [FromBody] List<UsuarioEvento> usuarios)
+    {
+        var usuarioService = new UsuarioService();
+        var context = new OrganizadorEventosContext();
+        List<ParticipanteEvento> participantes;
+
+      
+        participantes = (from participanteEvento in context.ParticipanteEventos
+                        join usuario in context.Usuarios on participanteEvento.ParticipanteId equals usuario.UsuarioId
+                        where participanteEvento.EventoId == eventoId
+                        orderby usuario.Nombre
+                        select participanteEvento).ToList();
+        
+
+       
+        for(int i = 0; i < usuarios.Count; i++)
+        {
+            participantes[i].Asistencia = usuarios[i].Asistencia;
+        }
+
+        context.SaveChanges();
+
+        return Ok();
+    }
+
+    [HttpPut("lista/participacion/equipo/{eventoId}")]
+    public IActionResult updateListaParticipacionEquipo(int eventoId, [FromBody] List<EquipoParticipacion> equipos)
+    {
+        var usuarioService = new UsuarioService();
+        var context = new OrganizadorEventosContext();
+        List<EquiposEvento> equiposParticipantes;
+
+      
+        equiposParticipantes = (from equipoEvento in context.EquiposEventos
+                                join equipo in context.Equipos on equipoEvento.EquipoId equals equipo.EquipoId
+                                where equipoEvento.EventoId == eventoId
+                                orderby equipo.Nombre
+                                select equipoEvento).ToList();
+        
+
+       
+        for(int i = 0; i < equiposParticipantes.Count; i++)
+        {
+            equiposParticipantes[i].Asistencia = equipos[i].Asistencia;
+        }
+
+        context.SaveChanges();
+
+        return Ok();
+    }
     
 }

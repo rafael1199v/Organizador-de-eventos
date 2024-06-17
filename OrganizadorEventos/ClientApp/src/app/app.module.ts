@@ -23,6 +23,7 @@ import { HistoryComponent } from './history/history.component';
 import { EventoService } from './services/EventoService';
 import { UsuarioService } from './services/UsuarioService';
 import { EquipoService } from './services/EquipoService';
+import { EventTeamParticipationComponent } from './event-team-participation/event-team-participation.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { EquipoService } from './services/EquipoService';
     CreateTeamComponent,
     MyEventsComponent,
     EventParticipationComponent,
-    HistoryComponent
+    HistoryComponent,
+    EventTeamParticipationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,7 +61,8 @@ import { EquipoService } from './services/EquipoService';
       { path: 'create-team/:id/:limit', component: CreateTeamComponent},
       { path: 'my-events', component: MyEventsComponent},
       { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent},
-      { path: 'history', component: HistoryComponent}
+      { path: 'history', component: HistoryComponent},
+      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent}
     ]),
     AppRoutingModule
   ],

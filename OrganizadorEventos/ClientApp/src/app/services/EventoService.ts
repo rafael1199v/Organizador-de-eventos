@@ -2,7 +2,8 @@ import { Injectable, Inject } from "@angular/core";
 import { Evento } from "../models/interfaces/Evento.interface";
 import { HttpClient } from "@angular/common/http";
 import { FormGroup } from "@angular/forms";
-import { Usuario } from "../models/interfaces/Usuario.interface";
+import { Usuario, UsuarioEvento } from "../models/interfaces/Usuario.interface";
+import { Equipo } from "../models/interfaces/Equipo.interface";
 
 
 @Injectable()
@@ -70,4 +71,18 @@ export class EventoService{
         console.log(participante)
         return this.http.post<any>(this.baseUrl + 'evento/verificar/registro', participante);
     }
+
+    guardarAsistenciaIndividual(eventoId: string, participantes: UsuarioEvento[]){
+        console.log(participantes);
+        console.log(eventoId);
+        return this.http.put<UsuarioEvento[]>(this.baseUrl + 'evento/lista/participacion/' + eventoId, participantes);
+    }
+
+
+    guardarAsistenciaEquipo(eventoId: string, equipos: Equipo[]){
+        console.log(equipos);
+        console.log(eventoId);
+        return this.http.put<Equipo[]>(this.baseUrl + 'evento/lista/participacion/equipo/' + eventoId, equipos);
+    }
+
 }

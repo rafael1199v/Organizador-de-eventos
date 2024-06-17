@@ -46,7 +46,8 @@ export class EventDetailsComponent {
       this.route.navigate(['/create-team',this.evento.eventoId ,this.evento.maxPersonasPorEquipo])
     }
     else{
-      this.inscripcionIndividual().subscribe(resultado => {this.inscrito = true}, error => console.log(error));
+      this.inscripcionIndividual().subscribe(resultado => {this.inscrito = true; alert("Usuario Inscrito Correctamente")}, error => console.log(error));
+      this.route.navigate(['/home'])
     }
   }
 

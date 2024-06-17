@@ -24,14 +24,26 @@ public partial class Equipo
 
 
 public class EquipoRegistro{
-    public string? Nombre {get; set;}
-    public string? Organizacion {get; set;}
+    public string Nombre {get; set;} = null!;
+    public string Organizacion {get; set;} = null!;
     public List<EquipoDatos> datos {get; set;} = null!;
     public int EventoId {get; set;}
     public int RepresentanteId {get; set;}
+    public string? RepresentanteCorreo{get; set;}
 }
 
 public class EquipoDatos{
     public string? Correo {get; set;}
     public string? Nombre {get; set;}
+}
+
+
+public class EquipoParticipacion{
+    public int EquipoId { get; set; }
+    public string Nombre { get; set; } = null!;
+    public int NumeroIntegrantes { get; set; }
+    public string Organizacion { get; set; } = null!;
+    public int RepresentanteId { get; set; }
+    public bool Asistencia { get; set; }
+
 }

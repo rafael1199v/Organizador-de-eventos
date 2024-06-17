@@ -30,15 +30,25 @@ public class EquipoController : ControllerBase
             System.Console.WriteLine(a.Nombre + " " + a.Correo);
         }
 
+        System.Console.WriteLine("Representante: " + equipoDatos.RepresentanteCorreo);
 
         if(equipoService.verificarExistenciaEvento(_appDbContext, equipoDatos.Nombre, equipoDatos.EventoId)){
             return BadRequest(new {Message = "El evento ya existe"});   
         }
 
+
+        equipoService.registrarEquipo(_appDbContext, equipoDatos, equipoDatos.EventoId);
         
-
-
         return Ok();
     }
+
+
+    [HttpGet("participacion/{id}")]
+    public IActionResult getEquiposParticipantes(int id)
+    {
+        var equipoService = new EquipoService();
+        return Ok(equipoService.getEquiposParticipantes(_appDbContext, id));
+    }
+
 
 }
