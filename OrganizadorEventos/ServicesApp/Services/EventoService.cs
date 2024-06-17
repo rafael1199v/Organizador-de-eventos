@@ -66,14 +66,51 @@ public class EventoService
     public IEnumerable<Evento> getHistorialEventoPartipante(int usuarioId)
     {
         DateTime fecha = DateTime.Now;
-
-        var eventos = from evento in _appDbContext.Eventos
+       
+        var eventos = (from evento in _appDbContext.Eventos
                         join participanteEvento in _appDbContext.ParticipanteEventos on evento.EventoId equals participanteEvento.EventoId
                         where participanteEvento.ParticipanteId == usuarioId && evento.Finalizacion <= fecha && participanteEvento.Asistencia == true
-                        select evento;
+                        select evento).ToList();
         
-        return eventos.ToList();
+        
+        
+        return eventos;
     }
+
+    public IEnumerable<Evento> getHistorialEventoPartipanteEquipo(int usuarioId)
+    {
+        DateTime fecha = DateTime.Now;
+       
+        var eventos = (from evento in _appDbContext.Eventos
+                        join equipoEvento in _appDbContext.EquiposEventos on evento.EventoId equals equipoEvento.EventoId
+                        join miembroEquipo in _appDbContext.MiembrosEquipos on equipoEvento.EquipoId equals miembroEquipo.EquipoId
+                        where miembroEquipo.MiembroId == usuarioId && evento.Finalizacion <= fecha && equipoEvento.Asistencia == true
+                        select evento).ToList();
+      
+        
+        
+        return eventos;
+    }
+
+
+    public IEnumerable<Evento> getHistorialEventoRepresentante(int usuarioId)
+    {
+        DateTime fecha = DateTime.Now;
+        //Revisar
+      
+        var eventos = (from evento in _appDbContext.Eventos
+                            join equipoEvento in _appDbContext.EquiposEventos on evento.EventoId equals equipoEvento.EventoId
+                            join equipo in _appDbContext.Equipos on equipoEvento.EquipoId equals equipo.EquipoId
+                            where !(from miembroEquipo in _appDbContext.MiembrosEquipos
+                                    where miembroEquipo.EquipoId == equipo.EquipoId
+                                    select miembroEquipo.MiembroId).Contains(equipo.RepresentanteId) && evento.Finalizacion <= fecha && equipoEvento.Asistencia == true && equipo.RepresentanteId == usuarioId
+                                    select evento).ToList();
+       
+        
+        return eventos;
+    }
+
+
 
     public IEnumerable<Evento> getHistorialEventoOrganizador(int usuarioId)
     {
@@ -85,6 +122,12 @@ public class EventoService
 
 
         return eventos.ToList();
+    }
+
+
+    public void crearEvento(Evento evento){
+        _appDbContext.Add(evento);
+        _appDbContext.SaveChanges();
     }
 
 

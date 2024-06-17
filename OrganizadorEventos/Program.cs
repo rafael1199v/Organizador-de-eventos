@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews()
 );
 builder.Services.AddDbContext<OrganizadorEventosContext>(options=>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-
+builder.Services.AddScoped<EventoService>();
 
 var app = builder.Build();
 

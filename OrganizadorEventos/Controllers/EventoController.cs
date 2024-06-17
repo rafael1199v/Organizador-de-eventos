@@ -7,12 +7,12 @@ using OrganizadorEventos.ServicesApp.Models;
 
 public class EventoController : ControllerBase
 {
-    private readonly OrganizadorEventosContext _appDbContext;
+    private readonly EventoService _eventoService;
 
 
-    public EventoController(OrganizadorEventosContext appDbContext)
+    public EventoController(EventoService eventoService)
     {
-        _appDbContext = appDbContext;
+        _eventoService = eventoService;
     }
 
 
@@ -20,9 +20,7 @@ public class EventoController : ControllerBase
 
     public IActionResult getEventosIndividuales(int usuarioId)
     {
-
-        var eventos = new EventoService(_appDbContext);
-        return Ok(eventos.getAllEventosIndividuales(usuarioId));
+        return Ok(this._eventoService.getAllEventosIndividuales(usuarioId));
 
     }
 
@@ -30,8 +28,7 @@ public class EventoController : ControllerBase
     [HttpGet("grupo/{usuarioId}")]
     public IActionResult getEventosGrupales(int usuarioId)
     {
-        var eventos = new EventoService(_appDbContext);
-        return Ok(eventos.getAllEventosGrupales(usuarioId));
+        return Ok(this._eventoService.getAllEventosGrupales(usuarioId));
     }
 
 
@@ -39,32 +36,35 @@ public class EventoController : ControllerBase
 
     public IActionResult getEvento(int id)
     {
-        var eventosService = new EventoService(_appDbContext);
-        return Ok(eventosService.getDetalleEvento(id));
+        return Ok(this._eventoService.getDetalleEvento(id));
     }
 
 
     [HttpGet("{id}")]
     public IActionResult getEventosOrganizador(int id)
     {
-        var eventosService = new EventoService(_appDbContext);
-        return Ok(eventosService.getEventosOrganizador(id));
+
+        return Ok(this._eventoService.getEventosOrganizador(id));
     }
 
 
     [HttpGet("organizador/{id}")]
     public IActionResult getHistorialEventosOrganizador(int id)
     {
-        var eventoService = new EventoService(_appDbContext);
-        return Ok(eventoService.getHistorialEventoOrganizador(id));
+        return Ok(this._eventoService.getHistorialEventoOrganizador(id));
     }
 
 
     [HttpGet("participante/{id}")]
     public IActionResult getHistorialEventoParticipante(int id)
     {
-        var eventoService = new EventoService(_appDbContext);
-        return Ok(eventoService.getHistorialEventoPartipante(id));
+       
+        var eventos1 = this._eventoService.getHistorialEventoPartipante(id);
+        var eventos2 = this._eventoService.getHistorialEventoPartipanteEquipo(id);
+        var eventos3 = this._eventoService.getHistorialEventoRepresentante(id);
+
+        var resultado = eventos1.Concat(eventos2.Concat(eventos3));
+        return Ok(resultado);
     }
 
     [HttpPost("crearEvento")]
@@ -82,9 +82,7 @@ public class EventoController : ControllerBase
             OrganizadorId = evento.OrganizadorId,
         };
         
-       _appDbContext.Eventos.Add(even);
-       _appDbContext.SaveChanges();
-
+        this._eventoService.crearEvento(evento);
         return Ok();
     }
     

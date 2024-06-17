@@ -22,6 +22,7 @@ import { EventParticipationComponent } from './event-participation/event-partici
 import { HistoryComponent } from './history/history.component';
 import { EventoService } from './services/EventoService';
 import { UsuarioService } from './services/UsuarioService';
+import { EquipoService } from './services/EquipoService';
 
 
 @NgModule({
@@ -62,7 +63,7 @@ import { UsuarioService } from './services/UsuarioService';
     ]),
     AppRoutingModule
   ],
-  providers: [EventoService, UsuarioService],
+  providers: [EventoService, UsuarioService, EquipoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

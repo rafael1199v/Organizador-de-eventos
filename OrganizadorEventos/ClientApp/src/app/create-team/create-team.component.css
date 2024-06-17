@@ -35,12 +35,11 @@
 .formbold-form-wrapper {
     margin: 0 auto;
     max-width: 550px;
-    width: 100%;
-    background: #F8F9FA;
+    width: 100%;   
     border-radius: 5px;
     border-color: black;
     border-width: 5px;
-    padding: 40px;
+    padding: 30px;
 }
 
 .formbold-main-wrapper {
@@ -48,13 +47,14 @@
     align-items: center;
     justify-content: center;
     padding: 48px;
-    background: transparent;
+    background-color: rgb(246, 246, 246);
 }
 
 .number-box{
     height: 25px;
-    width: 50px;
+    width: 100px;
     margin-top: 1px;
+    margin-left: 10px;
 }
 
 .text-box{
@@ -62,3 +62,16 @@
     height: 30px;
     margin-top: -1px;
 }
+
+.agregar{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+}
+
+#equipoNombre{
+    margin-left: 10px;
+}
+
+

@@ -11,6 +11,8 @@ public partial class Equipo
 
     public int NumeroIntegrantes { get; set; }
 
+    public string Organizacion { get; set; } = null!;
+
     public int RepresentanteId { get; set; }
 
     public virtual ICollection<EquiposEvento> EquiposEventos { get; } = new List<EquiposEvento>();
@@ -18,4 +20,18 @@ public partial class Equipo
     public virtual ICollection<MiembrosEquipo> MiembrosEquipos { get; } = new List<MiembrosEquipo>();
 
     public virtual Usuario Representante { get; set; } = null!;
+}
+
+
+public class EquipoRegistro{
+    public string? Nombre {get; set;}
+    public string? Organizacion {get; set;}
+    public List<EquipoDatos> datos {get; set;} = null!;
+    public int EventoId {get; set;}
+    public int RepresentanteId {get; set;}
+}
+
+public class EquipoDatos{
+    public string? Correo {get; set;}
+    public string? Nombre {get; set;}
 }
