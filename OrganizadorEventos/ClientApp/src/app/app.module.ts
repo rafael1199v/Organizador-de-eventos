@@ -24,6 +24,7 @@ import { EventoService } from './services/EventoService';
 import { UsuarioService } from './services/UsuarioService';
 import { EquipoService } from './services/EquipoService';
 import { EventTeamParticipationComponent } from './event-team-participation/event-team-participation.component';
+import { CertificationComponent } from './certification/certification.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { EventTeamParticipationComponent } from './event-team-participation/even
     MyEventsComponent,
     EventParticipationComponent,
     HistoryComponent,
-    EventTeamParticipationComponent
+    EventTeamParticipationComponent,
+    CertificationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -62,7 +64,8 @@ import { EventTeamParticipationComponent } from './event-team-participation/even
       { path: 'my-events', component: MyEventsComponent},
       { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent},
       { path: 'history', component: HistoryComponent},
-      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent}
+      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent},
+      { path: 'certification', component: CertificationComponent}
     ]),
     AppRoutingModule
   ],

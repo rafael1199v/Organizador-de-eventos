@@ -1,0 +1,23 @@
+<!-- hacer ngif, si el el usuario es el organizador del evento seleccionado -->
+<h1 class="text-center">Lista de asistencia</h1>
+<div style="margin-top: 25px;">
+    <div class="text-center" style="margin:5px;" *ngFor="let participante of Participantes; let i = index">
+        <div class="checkbox-wrapper-46">
+            <input type="checkbox" id="{{i}}" class="inp-cbx" [checked]="participante.asistencia">
+            <label for="{{i}}" class="cbx"
+              ><span class="checker">
+                <svg viewBox="0 0 12 10" height="10px" width="12px" >
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
+              ><span>{{i + 1}} {{participante?.nombre}}: {{participante?.correo}}</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- en caso de que el usuario no sea el organizador del evento, cargar un certificado de asistencia -->
+<h1 class="text-center">Certificado de asistencia</h1>
+<p><strong>Evento:</strong>Nombre del evento</p>
+
+
+
+
