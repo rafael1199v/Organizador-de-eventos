@@ -3,7 +3,6 @@ using OrganizadorEventos.ServicesApp.Models;
 
 public class EquipoService{
 
-
     public bool verificarExistenciaEvento(OrganizadorEventosContext _appDbContext, string? nombreEquipo, int eventoId)
     {
         var Equipo = (from equipo in _appDbContext.Equipos
@@ -17,7 +16,7 @@ public class EquipoService{
     }
 
 
-    public void registrarEquipo(OrganizadorEventosContext _appDbContext, EquipoRegistro equipoRegistro, int eventoID)
+    public void registrarEquipo(OrganizadorEventosContext _appDbContext, EquipoRegistro equipoRegistro, int eventoID, IEmailService emailService)
     {
 
         List<string?> correos = this.getCorreos(equipoRegistro.datos);
@@ -31,6 +30,12 @@ public class EquipoService{
         if(identificadores.Count != equipoRegistro.datos.Count){
             System.Console.WriteLine("Algun usuario no esta registrado");
             return;
+        }
+
+        foreach(string? correo in correos)
+        {
+            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro Evento", Contenido = "<p>Comprobante de registro a un evento</p>"};
+            emailService.SendEmail(request);
         }
 
         var equipo = new Equipo{
@@ -94,6 +99,25 @@ public class EquipoService{
         var equipos = (from equipo in _appDbContext.Equipos
                         join equipoEvento in _appDbContext.EquiposEventos on equipo.EquipoId equals equipoEvento.EquipoId
                         where equipoEvento.EventoId == eventoId
+                        orderby equipo.Nombre
+                        select new EquipoParticipacion{
+                            EquipoId = equipo.EquipoId,
+                            Nombre = equipo.Nombre,
+                            NumeroIntegrantes = equipo.NumeroIntegrantes,
+                            Organizacion = equipo.Organizacion,
+                            RepresentanteId = equipo.RepresentanteId,
+                            Asistencia = equipoEvento.Asistencia
+                        }).ToList();
+
+        return equipos;
+   }
+
+
+   public List<EquipoParticipacion> getEquiposParticipantesHistorial(OrganizadorEventosContext _appDbContext, int eventoId)
+   {
+        var equipos = (from equipo in _appDbContext.Equipos
+                        join equipoEvento in _appDbContext.EquiposEventos on equipo.EquipoId equals equipoEvento.EquipoId
+                        where equipoEvento.EventoId == eventoId && equipoEvento.Asistencia == true
                         orderby equipo.Nombre
                         select new EquipoParticipacion{
                             EquipoId = equipo.EquipoId,

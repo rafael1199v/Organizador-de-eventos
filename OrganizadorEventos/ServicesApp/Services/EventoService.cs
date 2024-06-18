@@ -5,10 +5,12 @@ using OrganizadorEventos.ServicesApp.Models;
 public class EventoService
 {
     private readonly OrganizadorEventosContext _appDbContext;
+    private readonly IEmailService _emailService;
 
-    public EventoService(OrganizadorEventosContext appDbContext)
+    public EventoService(OrganizadorEventosContext appDbContext, IEmailService emailService)
     {
         _appDbContext = appDbContext;
+        _emailService = emailService;
     }
 
     public IEnumerable<Evento> getAllEventosIndividuales(int usuarioId)
@@ -135,13 +137,16 @@ public class EventoService
         var Usuario = new ParticipanteEvento{
             ParticipanteId = usuario.ParticipanteId,
             EventoId = usuario.EventoId,
-            Asistencia = usuario.Asistencia
+            Asistencia = usuario.Asistencia,
         };
 
         //TODO: Mandar Comprobante por gmail
     
         _appDbContext.ParticipanteEventos.Add(Usuario);
         _appDbContext.SaveChanges();
+
+        var request = new EmailDTO{Destinatario = usuario.Correo, Asunto = "Registro Evento", Contenido = "<p>Comprobante de registro a un evento</p>"};
+        _emailService.SendEmail(request);
 
     }
 

@@ -51,22 +51,24 @@ export class EventoService{
    }
 
 
-   inscripcionIndividual(eventoID: number, participanteID: number){
+   inscripcionIndividual(eventoID: number, participanteID: number, Correo: string){
         const participante = {
             participanteId: participanteID,
             eventoId: eventoID,
-            asistencia: false
+            asistencia: false,
+            correo: Correo
         }
 
         return this.http.post<any>(this.baseUrl + 'evento/registro/participante', participante);
     }
 
 
-    verificarRegistro(eventoID: number, participanteID: number){
+    verificarRegistro(eventoID: number, participanteID: number, Correo: string){
         const participante = {
             participanteId: participanteID,
             eventoId: eventoID,
-            asistencia: false
+            asistencia: false,
+            correo: Correo
         }
         console.log(participante)
         return this.http.post<any>(this.baseUrl + 'evento/verificar/registro', participante);

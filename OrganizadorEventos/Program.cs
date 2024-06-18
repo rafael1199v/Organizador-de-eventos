@@ -13,6 +13,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddDbContext<OrganizadorEventosContext>(options=>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddScoped<EventoService>();
+builder.Services.AddScoped<IEmailService,EmailService>();
 
 var app = builder.Build();
 

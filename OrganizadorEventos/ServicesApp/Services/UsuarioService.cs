@@ -60,9 +60,6 @@ public class UsuarioService
                             Asistencia = participante.Asistencia
                         };
 
-
-      
-
         return usuarios.ToList();
     }
 
@@ -82,5 +79,23 @@ public class UsuarioService
 
 
         return true;
+    }
+
+
+    public List<UsuarioEvento> getUsuariosEventoHistorial(OrganizadorEventosContext _appDbContext, int eventoId)
+    {
+        var usuarios = from usuario in _appDbContext.Usuarios
+                        join participante in _appDbContext.ParticipanteEventos on usuario.UsuarioId equals participante.ParticipanteId
+                        where participante.EventoId == eventoId && participante.Asistencia == true
+                        orderby usuario.Nombre
+                        select new UsuarioEvento{
+                            UsuarioId = usuario.UsuarioId,
+                            Nombre = usuario.Nombre,
+                            Correo = usuario.Correo,
+                            Organizacion = usuario.Organizacion,
+                            Asistencia = participante.Asistencia
+                        };
+
+        return usuarios.ToList();
     }
 }

@@ -11,8 +11,10 @@ public class UsuarioController: ControllerBase
 {
 
     private readonly OrganizadorEventosContext _appDbContext;
-    public UsuarioController(OrganizadorEventosContext appDbContext){
+    private readonly IEmailService _emailService;
+    public UsuarioController(OrganizadorEventosContext appDbContext, IEmailService emailService){
         _appDbContext = appDbContext;
+        _emailService = emailService;
     }
 
     [HttpPost]

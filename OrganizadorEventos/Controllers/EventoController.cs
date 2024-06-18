@@ -8,11 +8,13 @@ using OrganizadorEventos.ServicesApp.Models;
 public class EventoController : ControllerBase
 {
     private readonly EventoService _eventoService;
+    private readonly IEmailService _emailService;
 
 
-    public EventoController(EventoService eventoService)
+    public EventoController(EventoService eventoService, IEmailService emailService)
     {
         _eventoService = eventoService;
+        _emailService = emailService;
     }
 
 
@@ -43,7 +45,6 @@ public class EventoController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult getEventosOrganizador(int id)
     {
-
         return Ok(this._eventoService.getEventosOrganizador(id));
     }
 
@@ -91,6 +92,7 @@ public class EventoController : ControllerBase
     public IActionResult registroPartipante([FromBody] UsuarioRegistroEvento usuario)
     {
         this._eventoService.registrarParticipante(usuario);
+        
         return Ok();
     }
 

@@ -10,10 +10,11 @@ using OrganizadorEventos.ServicesApp.Models;
 public class EquipoController : ControllerBase
 {
     private readonly OrganizadorEventosContext _appDbContext;
-
-    public EquipoController(OrganizadorEventosContext appDbContext)
+    private readonly IEmailService _emailService;
+    public EquipoController(OrganizadorEventosContext appDbContext, IEmailService emailService)
     {
         _appDbContext = appDbContext;
+        _emailService = emailService;
     }
 
 
@@ -37,7 +38,7 @@ public class EquipoController : ControllerBase
         }
 
 
-        equipoService.registrarEquipo(_appDbContext, equipoDatos, equipoDatos.EventoId);
+        equipoService.registrarEquipo(_appDbContext, equipoDatos, equipoDatos.EventoId, _emailService);
         
         return Ok();
     }

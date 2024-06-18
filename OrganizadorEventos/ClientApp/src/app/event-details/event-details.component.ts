@@ -3,6 +3,7 @@ import { Evento } from '../models/interfaces/Evento.interface';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventoService } from '../services/EventoService';
+import { core } from '@angular/compiler';
 
 
 
@@ -21,9 +22,9 @@ export class EventDetailsComponent {
       this.evento = resultado;
     }, error => console.log(error));
 
-    this.eventoService.verificarRegistro(parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '-1'),parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId)).subscribe(resultado => {
+    this.eventoService.verificarRegistro(parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '-1'),parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId), JSON.parse(localStorage.getItem('user') || '-1').correo).subscribe(resultado => {
       this.inscrito = resultado;
-      console.log(this.inscrito)
+      console.log(this.inscrito);
     }, error => console.log(error))
   }
 
@@ -37,7 +38,8 @@ export class EventDetailsComponent {
 
   inscripcionIndividual(){
     const eventoId : number = (this.evento?.eventoId ||  -1);
-    return this.eventoService.inscripcionIndividual(eventoId, parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId))
+    const correo : string = (JSON.parse(localStorage.getItem('user') || '-1').correo)
+    return this.eventoService.inscripcionIndividual(eventoId, parseInt((JSON.parse(localStorage.getItem('user') || '-1')).usuarioId), correo)
   }
 
 
