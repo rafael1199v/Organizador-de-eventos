@@ -42,10 +42,6 @@ export class EventoService{
             historials: [],
             organizador: organizadorEvento
         }
-
-        console.log(evento)
-        console.log(this.baseUrl + 'evento/crearEvento');
-
         return this.http.post<Evento>(this.baseUrl + 'evento/crearEvento', evento)
 
    }
@@ -70,21 +66,21 @@ export class EventoService{
             asistencia: false,
             correo: Correo
         }
-        console.log(participante)
         return this.http.post<any>(this.baseUrl + 'evento/verificar/registro', participante);
     }
 
     guardarAsistenciaIndividual(eventoId: string, participantes: UsuarioEvento[]){
-        console.log(participantes);
-        console.log(eventoId);
         return this.http.put<UsuarioEvento[]>(this.baseUrl + 'evento/lista/participacion/' + eventoId, participantes);
     }
 
 
     guardarAsistenciaEquipo(eventoId: string, equipos: Equipo[]){
-        console.log(equipos);
-        console.log(eventoId);
         return this.http.put<Equipo[]>(this.baseUrl + 'evento/lista/participacion/equipo/' + eventoId, equipos);
+    }
+
+
+    getListaFinalParticipacionIndividual(eventoId: string){
+        return this.http.get<UsuarioEvento[]>(this.baseUrl + 'usuario/lista/final/participacion/' + eventoId)
     }
 
 }

@@ -39,8 +39,18 @@ export class HistoryComponent {
     return this.http.get<Evento[]>(this.baseUrl + 'evento/organizador/' + (JSON.parse(localStorage.getItem('user') || '-1')).usuarioId);
   }
 
-  getCertList(idEvento: number){
-    this.router.navigate(['/certification', idEvento])
+  getCertList(idEvento: number, porEquipos: boolean){
+    if(porEquipos){
+      this.router.navigate(['/final-team-participation', idEvento])
+    }
+    else{
+      this.router.navigate(['/final-participation-individual', idEvento])
+    }
+    
+  }
+
+  getCertification(nombreEvento?: string){
+    this.router.navigate(['/certification', nombreEvento])
   }
 
 }

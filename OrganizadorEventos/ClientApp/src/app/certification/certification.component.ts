@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioEvento } from '../models/interfaces/Usuario.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,9 @@ import { UsuarioEvento } from '../models/interfaces/Usuario.interface';
   styleUrls: ['./certification.component.css']
 })
 export class CertificationComponent {
-  
-  Organizado: boolean = false;
-  Participantes: UsuarioEvento[] = [];
+  nombreEvento: string;
+
+  constructor(private activatedRoute: ActivatedRoute){
+    this.nombreEvento = (this.activatedRoute.snapshot.paramMap.get('eventName') || 'Evento');
+  }
 }

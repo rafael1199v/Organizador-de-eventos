@@ -1,0 +1,9 @@
+<h1>Lista de Participacion individual</h1>
+
+<div style="margin-top: 25px;">
+    <div class="text-center" style="margin:5px;" *ngFor="let participante of participantes; let i = index">
+        <div class="checkbox-wrapper-46">
+            <span><p>{{participante?.nombre}}: {{participante?.correo}}</p></span>
+        </div>
+    </div>
+</div>

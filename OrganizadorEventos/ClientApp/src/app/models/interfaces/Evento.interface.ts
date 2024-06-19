@@ -1,4 +1,3 @@
-import { Data } from "popper.js"
 
 export interface Evento{
   eventoId: number
@@ -7,7 +6,7 @@ export interface Evento{
   inicio: Date,
   finalizacion: Date,
   lugarEvento: string,
-  porEquipos: Boolean,
+  porEquipos: boolean,
   maxPersonasPorEquipo: number,
   organizadorId: number,
   historials: any,

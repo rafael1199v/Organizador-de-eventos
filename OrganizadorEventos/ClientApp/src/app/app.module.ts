@@ -28,7 +28,8 @@ import { CertificationComponent } from './certification/certification.component'
 import { PageNotFoundComponent } from './PageNotFound/page-not-found.component';
 import { AuthService } from './services/AuthService';
 import { AuthGuard } from './guards/auth.guard';
-
+import { FinalParticipationListComponent } from './history/final-participation-list/final-participation-list.component';
+import { FinalTeamParticipationListComponent } from './history/final-team-participation/final-team-participation.component';
 
 
 @NgModule({
@@ -49,6 +50,8 @@ import { AuthGuard } from './guards/auth.guard';
     HistoryComponent,
     EventTeamParticipationComponent,
     CertificationComponent,
+    FinalParticipationListComponent,
+    FinalTeamParticipationListComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -71,7 +74,9 @@ import { AuthGuard } from './guards/auth.guard';
       { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent, canActivate: [AuthGuard] },
       { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
       { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent, canActivate: [AuthGuard] },
-      { path: 'certification/:id', component: CertificationComponent, canActivate: [AuthGuard] },
+      { path: 'certification/:eventName', component: CertificationComponent, canActivate: [AuthGuard] },
+      { path: 'final-participation-individual/:eventId', component: FinalParticipationListComponent, canActivate: [AuthGuard] },
+      { path: 'final-team-participation/:eventId', component: FinalTeamParticipationListComponent, canActivate: [AuthGuard]},
       { path: '**', component: PageNotFoundComponent },
     ]),
     // AppRoutingModule

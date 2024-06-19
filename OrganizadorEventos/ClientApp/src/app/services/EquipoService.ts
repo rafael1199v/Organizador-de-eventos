@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Inject } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { Equipo } from "../models/interfaces/Equipo.interface";
 
 @Injectable()
 export class EquipoService{
@@ -34,6 +35,11 @@ export class EquipoService{
         }
 
         return this.http.post<any>(this.baseUrl + 'equipo/registro', equipo);
+    }
+
+
+    getListaFinalEquiposParticipacion(eventoId: string){
+        return this.http.get<Equipo[]>(this.baseUrl + 'equipo/lista/final/participacion/' + eventoId);
     }
 
 

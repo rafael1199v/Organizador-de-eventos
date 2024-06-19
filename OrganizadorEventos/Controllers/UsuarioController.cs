@@ -59,6 +59,14 @@ public class UsuarioController: ControllerBase
     }
 
 
+    [HttpGet("lista/final/participacion/{eventoId}")]
+    public IActionResult getUsuariosEventoHistorial(int eventoId)
+    {
+        var usuarioService = new UsuarioService();
+        return Ok(usuarioService.getUsuariosEventoHistorial(_appDbContext, eventoId));
+    }
+
+
    
 }
 

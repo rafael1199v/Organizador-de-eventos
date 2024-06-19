@@ -48,4 +48,12 @@ public class EquipoController : ControllerBase
     }
 
 
+    [HttpGet("lista/final/participacion/{eventoId}")]
+    public IActionResult getListaFinalEquiposParticipacion(int eventoId)
+    {
+        var equipoService = new EquipoService();
+        return Ok(equipoService.getEquiposParticipantesHistorial(_appDbContext, eventoId));
+    }
+
+
 }

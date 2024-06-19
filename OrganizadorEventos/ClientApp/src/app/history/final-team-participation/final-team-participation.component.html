@@ -1,0 +1,9 @@
+<h1>Lista Participacion Equipos</h1>
+
+<div style="margin-top: 25px;">
+    <div class="text-center" style="margin:5px;" *ngFor="let equipo of equipos; let i = index">
+        <div class="checkbox-wrapper-46">
+            <p>{{equipo?.nombre}}: {{equipo?.organizacion}}</p>
+        </div>
+    </div>
+</div>
