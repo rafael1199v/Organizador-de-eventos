@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'create-event', component: CreateEventComponent, canActivate: [AuthGuard] },
   { path: 'my-events', component: MyEventsComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
-  { path: '**', component: PageNotFoundComponent }, // Ruta para manejar rutas no definidas
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
