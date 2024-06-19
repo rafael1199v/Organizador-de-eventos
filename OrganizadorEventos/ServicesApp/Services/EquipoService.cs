@@ -12,7 +12,7 @@ public class EquipoService{
 
 
         if(Equipo == null) return false;
-        else return false;
+        else return true;
     }
 
     public List<int> getIdentificadores(OrganizadorEventosContext _appDbContext, List<string?> correos)

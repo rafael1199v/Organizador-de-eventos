@@ -32,5 +32,5 @@
 </div>
 
 <a [routerLinkActive]="['link-active']" [routerLink]="['/login']">
-    <button class="logout-btn">Cerrar sesión</button>
+    <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
 </a>

@@ -14,7 +14,7 @@ import { SingleEventListComponent } from './single-event-list/single-event-list.
 import { TeamEventListComponent } from './team-event-list/team-event-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { UserComponent } from './user/user.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
@@ -26,6 +26,8 @@ import { EquipoService } from './services/EquipoService';
 import { EventTeamParticipationComponent } from './event-team-participation/event-team-participation.component';
 import { CertificationComponent } from './certification/certification.component';
 import { PageNotFoundComponent } from './PageNotFound/page-not-found.component';
+import { AuthService } from './services/AuthService';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -55,24 +57,26 @@ import { PageNotFoundComponent } from './PageNotFound/page-not-found.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: LoginComponent, pathMatch: 'full' },
+      { path: '',  redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'single-event-list', component: SingleEventListComponent },
-      { path: 'team-event-list', component: TeamEventListComponent },
-      { path: 'create-event', component: CreateEventComponent },
-      { path: 'event-details/:id', component: EventDetailsComponent },
-      { path: 'user', component: UserComponent },
-      { path: 'create-team/:id/:limit', component: CreateTeamComponent },
-      { path: 'my-events', component: MyEventsComponent },
-      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent },
-      { path: 'history', component: HistoryComponent },
-      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent },
-      { path: 'certification', component: CertificationComponent }
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'single-event-list', component: SingleEventListComponent, canActivate: [AuthGuard] },
+      { path: 'team-event-list', component: TeamEventListComponent, canActivate: [AuthGuard] },
+      { path: 'create-event', component: CreateEventComponent, canActivate: [AuthGuard] },
+      { path: 'event-details/:id', component: EventDetailsComponent, canActivate: [AuthGuard] },
+      { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+      { path: 'create-team/:id/:limit', component: CreateTeamComponent, canActivate: [AuthGuard] },
+      { path: 'my-events', component: MyEventsComponent, canActivate: [AuthGuard] },
+      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent, canActivate: [AuthGuard] },
+      { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
+      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent, canActivate: [AuthGuard] },
+      { path: 'certification', component: CertificationComponent, canActivate: [AuthGuard] },
+      { path: '**', component: PageNotFoundComponent },
     ]),
-    AppRoutingModule
+    // AppRoutingModule
   ],
-  providers: [EventoService, UsuarioService, EquipoService],
+  providers: [EventoService, UsuarioService, EquipoService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

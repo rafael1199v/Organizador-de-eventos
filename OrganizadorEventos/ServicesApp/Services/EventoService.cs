@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using OrganizadorEventos.ServicesApp.Models;
 
 
@@ -106,7 +107,7 @@ public class EventoService
                             where !(from miembroEquipo in _appDbContext.MiembrosEquipos
                                     where miembroEquipo.EquipoId == equipo.EquipoId
                                     select miembroEquipo.MiembroId).Contains(equipo.RepresentanteId) && evento.Finalizacion <= fecha && equipoEvento.Asistencia == true && equipo.RepresentanteId == usuarioId
-                                    select evento).ToList();
+                                    select evento).Distinct().ToList();
        
         
         return eventos;

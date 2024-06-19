@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Inject } from '@angular/core';
+import { AuthService } from '../services/AuthService';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router, 
-    @Inject('BASE_URL') private baseUrl: string
+    @Inject('BASE_URL') private baseUrl: string,
+    private authService : AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +32,8 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.loginForm.valid){
       this.login(this.loginForm.value).subscribe(result => {
-        localStorage.setItem("user", JSON.stringify(result))
+        localStorage.setItem("user", JSON.stringify(result));
+        this.authService.login(this.loginForm.value.emai, this.loginForm.value.password);
         this.router.navigate(['/home']);
       }, error => {alert("Credenciales incorrectas")});
       
