@@ -25,6 +25,8 @@ import { UsuarioService } from './services/UsuarioService';
 import { EquipoService } from './services/EquipoService';
 import { EventTeamParticipationComponent } from './event-team-participation/event-team-participation.component';
 import { CertificationComponent } from './certification/certification.component';
+import { PageNotFoundComponent } from './PageNotFound/page-not-found.component';
+
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { CertificationComponent } from './certification/certification.component'
     EventParticipationComponent,
     HistoryComponent,
     EventTeamParticipationComponent,
-    CertificationComponent
+    CertificationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,19 +56,19 @@ import { CertificationComponent } from './certification/certification.component'
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'login', component: LoginComponent},
-      { path: 'register', component: RegisterComponent},
-      { path: 'single-event-list', component: SingleEventListComponent},
-      { path: 'team-event-list', component: TeamEventListComponent},
-      { path: 'create-event', component: CreateEventComponent},
-      { path: 'event-details/:id', component: EventDetailsComponent},
-      { path: 'user', component: UserComponent},
-      { path: 'create-team/:id/:limit', component: CreateTeamComponent},
-      { path: 'my-events', component: MyEventsComponent},
-      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent},
-      { path: 'history', component: HistoryComponent},
-      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent},
-      { path: 'certification', component: CertificationComponent}
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'single-event-list', component: SingleEventListComponent },
+      { path: 'team-event-list', component: TeamEventListComponent },
+      { path: 'create-event', component: CreateEventComponent },
+      { path: 'event-details/:id', component: EventDetailsComponent },
+      { path: 'user', component: UserComponent },
+      { path: 'create-team/:id/:limit', component: CreateTeamComponent },
+      { path: 'my-events', component: MyEventsComponent },
+      { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent },
+      { path: 'history', component: HistoryComponent },
+      { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent },
+      { path: 'certification', component: CertificationComponent }
     ]),
     AppRoutingModule
   ],

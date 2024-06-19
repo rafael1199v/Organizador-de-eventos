@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, Event} from '@angular/router';
+import { Router, NavigationEnd, Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-root',
@@ -10,9 +9,8 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'app';
   showNavbar = true;
-  
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.router.events
@@ -21,13 +19,14 @@ export class AppComponent implements OnInit {
       )
       .subscribe((event: NavigationEnd) => {
         const url = event.urlAfterRedirects;
+        console.log('Ruta actual:', url);
         this.showNavbar = this.shouldShowNavbar(url);
       });
   }
 
   shouldShowNavbar(url: string): boolean {
     // Define las rutas donde NO quieres mostrar el navbar
-    const noNavbarRoutes = ['/register','/login'];
+    const noNavbarRoutes = ['/register', '/login', '/404']; // Asegúrate de que '/PageNotFound' esté incluido si esa es la ruta de PageNotFoundComponent
     return !noNavbarRoutes.includes(url);
   }
 }
