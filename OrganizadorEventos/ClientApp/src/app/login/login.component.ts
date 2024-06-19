@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
       this.login(this.loginForm.value).subscribe(result => {
         localStorage.setItem("user", JSON.stringify(result))
         this.router.navigate(['/home']);
-      });
+      }, error => {alert("Credenciales incorrectas")});
       
     } else {
-      console.log('error');
+      alert('Campos invalidos');
     }
   }
 
