@@ -142,11 +142,16 @@ public class EventoService
         };
 
         //TODO: Mandar Comprobante por gmail
+
+
+        var nombreEvento = (from evento in _appDbContext.Eventos
+                                where evento.EventoId == usuario.EventoId
+                                select evento.Titulo).FirstOrDefault();
     
         _appDbContext.ParticipanteEventos.Add(Usuario);
         _appDbContext.SaveChanges();
 
-        var request = new EmailDTO{Destinatario = usuario.Correo, Asunto = "Registro Evento", Contenido = "<p>Comprobante de registro a un evento</p>"};
+        var request = new EmailDTO{Destinatario = usuario.Correo, Asunto = "Registro a evento: " + nombreEvento, Contenido = "<p>Comprobante de registro a un evento</p>"};
         _emailService.SendEmail(request);
 
     }

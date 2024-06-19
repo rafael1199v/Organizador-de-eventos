@@ -92,11 +92,12 @@ public class EquipoService{
    }
 
 
-   public void SendEmails(IEmailService emailService, List<string?> correos)
+   public void SendEmails(IEmailService emailService, List<string?> correos, OrganizadorEventosContext _appDbContext, int eventoID)
    {
+        string? nombreEvento = this.getNombreEvento(_appDbContext, eventoID);
         foreach(string? correo in correos)
         {
-            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro Evento", Contenido = "<p>Comprobante de registro a un evento</p>"};
+            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro a evento: " + nombreEvento, Contenido = "<p>Comprobante de registro a un evento</p>"};
             emailService.SendEmail(request);
         }
    }
@@ -142,6 +143,16 @@ public class EquipoService{
         _appDbContext.MiembrosEquipos.AddRange(miembros);
         _appDbContext.SaveChanges();
 
-        this.SendEmails(emailService, correos);
+        this.SendEmails(emailService, correos, _appDbContext,eventoID);
+    }
+
+
+    public string? getNombreEvento(OrganizadorEventosContext _appDbContext, int eventoId)
+    {
+         var nombreEvento = (from evento in _appDbContext.Eventos
+                                where evento.EventoId == eventoId
+                                select evento.Titulo).FirstOrDefault();
+    
+        return nombreEvento;
     }
 }
