@@ -23,6 +23,6 @@
 </div>
 
 <div class="text-center">
-    <button style="font-size: xx-large;" class="participation-btn" (click)="inscripcion()" [disabled]="evento == undefined || inscrito">{{textoInscripcion()}}</button>
+    <button style="font-size: xx-large;" class="participation-btn" (click)="inscripcion()" [hidden]="evento == undefined || inscrito">{{textoInscripcion()}}</button>
 </div>
 

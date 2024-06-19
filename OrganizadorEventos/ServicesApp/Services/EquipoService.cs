@@ -3,7 +3,7 @@ using OrganizadorEventos.ServicesApp.Models;
 
 public class EquipoService{
 
-    public bool verificarExistenciaEvento(OrganizadorEventosContext _appDbContext, string? nombreEquipo, int eventoId)
+    public bool verificarExistenciaEquipoEvento(OrganizadorEventosContext _appDbContext, string? nombreEquipo, int eventoId)
     {
         var Equipo = (from equipo in _appDbContext.Equipos
                         join eventoEquipo in _appDbContext.EquiposEventos on equipo.EquipoId equals eventoEquipo.EquipoId
@@ -15,69 +15,29 @@ public class EquipoService{
         else return false;
     }
 
-
-    public void registrarEquipo(OrganizadorEventosContext _appDbContext, EquipoRegistro equipoRegistro, int eventoID, IEmailService emailService)
+    public List<int> getIdentificadores(OrganizadorEventosContext _appDbContext, List<string?> correos)
     {
-
-        List<string?> correos = this.getCorreos(equipoRegistro.datos);
-
         var identificadores = (from usuario in _appDbContext.Usuarios
                                 where correos.Contains(usuario.Correo)
                                 select usuario.UsuarioId).ToList();
 
-        System.Console.WriteLine("La cantidad de identificadores = " + identificadores.Count);
+        return identificadores;
+    }
+
+
+    public bool verificarIntegrantesRegistrados(OrganizadorEventosContext _appDbContext, EquipoRegistro equipoRegistro)
+    {
+
+        List<string?> correos = this.getCorreos(equipoRegistro.datos);
+
+        var identificadores = this.getIdentificadores(_appDbContext, correos);
 
         if(identificadores.Count != equipoRegistro.datos.Count){
-            System.Console.WriteLine("Algun usuario no esta registrado");
-            return;
+            return false;
         }
 
-        foreach(string? correo in correos)
-        {
-            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro Evento", Contenido = "<p>Comprobante de registro a un evento</p>"};
-            emailService.SendEmail(request);
-        }
+        return true;
 
-        var equipo = new Equipo{
-            Nombre = equipoRegistro.Nombre,
-            NumeroIntegrantes = equipoRegistro.datos.Count,
-            Organizacion = equipoRegistro.Organizacion,
-            RepresentanteId = equipoRegistro.RepresentanteId,
-        };
-
-        _appDbContext.Equipos.Add(equipo);
-        _appDbContext.SaveChanges();
-       
-
-        int equipoId = equipo.EquipoId;
-
-        var equipoEvento = new EquiposEvento{
-            EquipoId = equipoId,
-            EventoId = eventoID,
-            Asistencia = false
-        };
-
-        _appDbContext.EquiposEventos.Add(equipoEvento);
-   
-
-        List<MiembrosEquipo> miembros = new List<MiembrosEquipo>();
-        for(int i = 0; i < identificadores.Count; i++){
-            var temp = new MiembrosEquipo{
-                MiembroId = identificadores[i],
-                EquipoId = equipoId
-            };
-
-            miembros.Add(temp);
-        }
-
-        _appDbContext.MiembrosEquipos.AddRange(miembros);
-        _appDbContext.SaveChanges();
-
-
-        foreach(var a in miembros){
-            System.Console.WriteLine(a.MiembroId + " " + a.EquipoId);
-        }
-       
     }
 
 
@@ -131,5 +91,57 @@ public class EquipoService{
         return equipos;
    }
 
+
+   public void SendEmails(IEmailService emailService, List<string?> correos)
+   {
+        foreach(string? correo in correos)
+        {
+            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro Evento", Contenido = "<p>Comprobante de registro a un evento</p>"};
+            emailService.SendEmail(request);
+        }
+   }
+
      
+    public void registrarEquipo(OrganizadorEventosContext _appDbContext, EquipoRegistro equipoRegistro, int eventoID, IEmailService emailService)
+    {
+        List<string?> correos = this.getCorreos(equipoRegistro.datos);
+        List<int> identificadores = this.getIdentificadores(_appDbContext, correos);
+        
+        var equipo = new Equipo{
+            Nombre = equipoRegistro.Nombre,
+            NumeroIntegrantes = equipoRegistro.datos.Count,
+            Organizacion = equipoRegistro.Organizacion,
+            RepresentanteId = equipoRegistro.RepresentanteId,
+        };
+
+        _appDbContext.Equipos.Add(equipo);
+        _appDbContext.SaveChanges();
+       
+
+        int equipoId = equipo.EquipoId;
+
+        var equipoEvento = new EquiposEvento{
+            EquipoId = equipoId,
+            EventoId = eventoID,
+            Asistencia = false
+        };
+
+        _appDbContext.EquiposEventos.Add(equipoEvento);
+   
+
+        List<MiembrosEquipo> miembros = new List<MiembrosEquipo>();
+        for(int i = 0; i < identificadores.Count; i++){
+            var temp = new MiembrosEquipo{
+                MiembroId = identificadores[i],
+                EquipoId = equipoId
+            };
+
+            miembros.Add(temp);
+        }
+
+        _appDbContext.MiembrosEquipos.AddRange(miembros);
+        _appDbContext.SaveChanges();
+
+        this.SendEmails(emailService, correos);
+    }
 }

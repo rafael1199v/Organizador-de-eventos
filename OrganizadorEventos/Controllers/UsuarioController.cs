@@ -54,7 +54,7 @@ public class UsuarioController: ControllerBase
 
         _appDbContext.Usuarios.Add(usuario);
         _appDbContext.SaveChanges();
-        
+
         return Ok(new {Mensaje = "Registrado Exitosamente"});
     }
 

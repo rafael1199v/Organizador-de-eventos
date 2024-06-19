@@ -25,18 +25,14 @@ public class EquipoController : ControllerBase
         
         var equipoService = new EquipoService();
 
-
-        foreach(var a in equipoDatos.datos)
+        if(equipoService.verificarExistenciaEquipoEvento(_appDbContext, equipoDatos.Nombre, equipoDatos.EventoId))
         {
-            System.Console.WriteLine(a.Nombre + " " + a.Correo);
+            return BadRequest(new {Mensage = "Un equipo con este nombre ya existe"});   
         }
-
-        System.Console.WriteLine("Representante: " + equipoDatos.RepresentanteCorreo);
-
-        if(equipoService.verificarExistenciaEvento(_appDbContext, equipoDatos.Nombre, equipoDatos.EventoId)){
-            return BadRequest(new {Message = "El evento ya existe"});   
+        else if(!equipoService.verificarIntegrantesRegistrados(_appDbContext, equipoDatos))
+        {
+            return NotFound(new {Mensaje = "Alguno de los integrantes no se encuentra registrado"});
         }
-
 
         equipoService.registrarEquipo(_appDbContext, equipoDatos, equipoDatos.EventoId, _emailService);
         
