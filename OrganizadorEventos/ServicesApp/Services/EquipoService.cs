@@ -97,7 +97,45 @@ public class EquipoService{
         string? nombreEvento = this.getNombreEvento(_appDbContext, eventoID);
         foreach(string? correo in correos)
         {
-            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro a evento: " + nombreEvento, Contenido = "<p>Comprobante de registro a un evento</p>"};
+            var request = new EmailDTO{Destinatario = correo, Asunto = "Registro a evento: " + nombreEvento, Contenido = @"
+                <html>
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            padding: 20px;
+                        }
+                        .container {
+                            background-color: #ffffff;
+                            border-radius: 5px;
+                            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+                            padding: 20px;
+                            margin: 20px auto;
+                            max-width: 600px;
+                        }
+                        h2 {
+                            color: #333333;
+                            font-size: 24px;
+                            margin-bottom: 20px;
+                        }
+                        p {
+                            color: #666666;
+                            font-size: 16px;
+                            line-height: 1.6;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <h2>Comprobante de registro a un evento</h2>
+                        <p>¡Gracias por registrarte en nuestro evento!</p>
+                        <p>Esperamos verte allí.</p>
+                        <p>Saludos,</p>
+                    </div>
+                </body>
+                </html>
+            "};
             emailService.SendEmail(request);
         }
    }
