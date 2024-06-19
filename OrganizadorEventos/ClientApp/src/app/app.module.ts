@@ -14,7 +14,6 @@ import { SingleEventListComponent } from './single-event-list/single-event-list.
 import { TeamEventListComponent } from './team-event-list/team-event-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
-// import { AppRoutingModule } from './app-routing.module';
 import { UserComponent } from './user/user.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { MyEventsComponent } from './my-events/my-events.component';
@@ -79,7 +78,7 @@ import { FinalTeamParticipationListComponent } from './history/final-team-partic
       { path: 'final-team-participation/:eventId', component: FinalTeamParticipationListComponent, canActivate: [AuthGuard]},
       { path: '**', component: PageNotFoundComponent },
     ]),
-    // AppRoutingModule
+
   ],
   providers: [EventoService, UsuarioService, EquipoService, AuthService],
   bootstrap: [AppComponent]
