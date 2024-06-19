@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuarioEvento } from '../models/interfaces/Usuario.interface';
 
 
 @Component({
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 export class CertificationComponent {
   
   Organizado: boolean = false;
+  Participantes: UsuarioEvento[] = [];
 }

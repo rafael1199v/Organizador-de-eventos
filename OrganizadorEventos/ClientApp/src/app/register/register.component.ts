@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { UsuarioService } from '../services/UsuarioService';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ export class RegisterComponent {
 
   registerForm!: FormGroup;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, @Inject('BASE_URL') private baseUrl: string, private usuarioService: UsuarioService){
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, @Inject('BASE_URL') private baseUrl: string, private usuarioService: UsuarioService, private router: Router){
     
   }
 
@@ -50,6 +51,7 @@ export class RegisterComponent {
       this.usuarioService.registrarUsuario(this.registerForm).subscribe( resultado =>{
         alert("Usuario Registrado")
         this.registerForm.reset();
+        this.router.navigate(['/login']);
       }, error => console.log(error));
     }
   }
