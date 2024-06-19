@@ -71,7 +71,7 @@ import { AuthGuard } from './guards/auth.guard';
       { path: 'event-participation/:id/:teamOrsingle', component: EventParticipationComponent, canActivate: [AuthGuard] },
       { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
       { path: 'event-team-participation/:id/:teamOrsingle', component: EventTeamParticipationComponent, canActivate: [AuthGuard] },
-      { path: 'certification', component: CertificationComponent, canActivate: [AuthGuard] },
+      { path: 'certification/:id', component: CertificationComponent, canActivate: [AuthGuard] },
       { path: '**', component: PageNotFoundComponent },
     ]),
     // AppRoutingModule

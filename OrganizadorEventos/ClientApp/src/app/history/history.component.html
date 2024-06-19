@@ -21,7 +21,7 @@
         <!-- Eventos en los que asististe -->
         <div *ngIf="participante; else elseBlock">
             <div class="event-list">
-                <div class="event" *ngFor="let evento of eventosParticipante">
+                <div class="event" *ngFor="let evento of eventosParticipante" (click)="getCertList(evento.eventoId)">
                     <div class="event-date">
                         <span>{{ evento?.inicio?.getDate() }}</span>
                         <span>{{ evento?.inicio?.toLocaleString('en-us', {month: 'long'}) }}</span>
@@ -38,7 +38,7 @@
         <!-- Todos los eventos (por qué rayos me lo marca como TODO??????????) -->
         <ng-template #elseBlock>
             <div class="event-list">
-                <div class="event" *ngFor="let evento of eventosOrganizador">
+                <div class="event" *ngFor="let evento of eventosOrganizador" (click)="getCertList(evento.eventoId)">
                     <div class="event-date">
                         <span>{{ evento?.inicio?.getDate() }}</span>
                         <span>{{ evento?.inicio?.toLocaleString('en-us', {month: 'long'}) }}</span>
