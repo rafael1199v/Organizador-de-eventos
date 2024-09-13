@@ -1,43 +1,20 @@
-using OrganizadorEventos.ServicesApp.Models;
-using MailKit.Security;
-using MimeKit.Text;
-using MimeKit;
-using MailKit.Net.Smtp;
-
-
-public class EmailService : IEmailService
+namespace OrganizadorEventos.ServicesApp.Models
 {
-    private readonly IConfiguration _config;
-
-    public EmailService(IConfiguration config)
+    public class EmailService : IEmailService
     {
-        _config = config;
-    }
+        private readonly EmailMessageBuilder _emailMessageBuilder;
+        private readonly EmailSender _emailSender;
 
-    public void SendEmail(EmailDTO request)
-    {
-        var email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse(_config.GetSection("Email:UserName").Value));
-        email.To.Add(MailboxAddress.Parse(request.Destinatario));
-        email.Subject = request.Asunto;
-        email.Body = new TextPart(TextFormat.Html)
+        public EmailService(IConfiguration config)
         {
-            Text = request.Contenido
-        };
+            _emailMessageBuilder = new EmailMessageBuilder(config);
+            _emailSender = new EmailSender(config);
+        }
 
-
-        using var smtp = new SmtpClient();
-        smtp.ServerCertificateValidationCallback = (s,c,h,e) => true;
-        smtp.Connect(
-            _config.GetSection("Email:Host").Value,
-            Convert.ToInt32(_config.GetSection("Email:Port").Value),
-            SecureSocketOptions.Auto
-        );
-
-
-        smtp.Authenticate(_config.GetSection("Email:UserName").Value, _config.GetSection("Email:PassWord").Value);
-
-        smtp.Send(email);
-        smtp.Disconnect(true);
+        public void SendEmail(EmailDTO request)
+        {
+            var email = _emailMessageBuilder.BuildEmailMessage(request);
+            _emailSender.SendEmail(email);
+        }
     }
 }
